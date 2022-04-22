@@ -70,10 +70,11 @@ public class Tree extends Ground {
             if (this.tickcount%5==0){ //turn tiles around it
                 //for i in location.getExits.getDestination().getground() returns the ground type of the exits
             }
-
+            System.out.println(probability);
             if (probability<=0.2){ //chance to wither
                 treeState=TreeTypes.DEAD;
                 super.setDisplayChar('.');
+                location.setGround(new Dirt());
             }
         }
     }
