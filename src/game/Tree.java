@@ -2,7 +2,10 @@ package game;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class Tree extends Ground {
     TreeTypes treeState;
@@ -68,14 +71,32 @@ public class Tree extends Ground {
             }
 
             if (this.tickcount%5==0){ //turn tiles around it
-                //for i in location.getExits.getDestination().getground() returns the ground type of the exits
+                grownew(location);
             }
-            System.out.println(probability);
+            //System.out.println(probability);
             if (probability<=0.2){ //chance to wither
                 treeState=TreeTypes.DEAD;
                 super.setDisplayChar('.');
                 location.setGround(new Dirt());
+                //System.out.println("dead: "+location.x()+" "+location.y());
             }
         }
+    }
+
+    public void grownew(Location location){
+        ArrayList<Location> fertileLocations=new ArrayList<>();
+
+        for (int i=0;i<location.getExits().size();i++){ //adds all possible exits with fertile ground into arraylist
+            if (location.getExits().get(i).getDestination().getDisplayChar()=='.'){
+                fertileLocations.add(location.getExits().get(i).getDestination()); //adds location class of the location to arraylist
+            }
+        }
+        if (fertileLocations.size()==0){ //if no fertile ground around, cant grow
+            return;
+        }
+        Random random=new Random();
+        int index=random.nextInt(fertileLocations.size());
+        fertileLocations.get(index).setGround(new Tree());
+        //System.out.println("new tree at:"+fertileLocations.get(index).x()+" "+fertileLocations.get(index).y());
     }
 }
