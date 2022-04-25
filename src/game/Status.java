@@ -9,4 +9,6 @@ public enum Status {
     TALL, // use this status to tell that current instance has "grown".
     FOLLOWBEHAVIOUR, // use this status to see the actor has capability to follow
     DORMANT, // use this status to see if Koopa is Dormant
+    INVINCIBLE, // use this status to see if a player has consumed PowerStar and is under its effect
+    FADINGDURATION, // use this status to see the fading status of powerstar
 }
