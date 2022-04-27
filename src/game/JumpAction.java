@@ -11,15 +11,16 @@ import java.util.Random;
 public class JumpAction extends Action {
 
     double probability;
-    Location currentlocation;
     String directionintereseted;
     Location targetlocation;
     Boolean jumpoutcome;
     Ground targetground;
-    GameMap map;
+    int x;
+    int y;
+    int damage;
 
     public JumpAction(Location location,String direction) {
-        this.currentlocation=location;
+        this.targetlocation=location;
         this.directionintereseted=direction;
         this.jumpoutcome=false;
 
@@ -27,14 +28,10 @@ public class JumpAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        //find target ground type
-        for (int i=0;i<this.currentlocation.getExits().size();i++){ //find target location class && target ground class
-            if (this.currentlocation.getExits().get(i).getName()==this.directionintereseted){
-                this.targetlocation=this.currentlocation.getExits().get(i).getDestination();
-                this.targetground=this.currentlocation.getExits().get(i).getDestination().getGround();
-                break;
-            }
-        }
+        //sets the target ground type and x/y coordinates
+        this.targetground=targetlocation.getGround();
+        x=targetlocation.x();
+        y=targetlocation.y();
 
         //generate random chance
         Random random=new Random();
@@ -42,53 +39,87 @@ public class JumpAction extends Action {
 
         //check if player ate super mushroom
         if (actor.hasCapability(Status.TALL)){
-            map.moveActor(actor,this.targetlocation);
+            successfuljump(actor,map);
+            System.out.println("Your "+actor+" got superpowers");
+        } else {
+            //check jump target
+            char groundchar = this.targetground.getDisplayChar();
+            if (groundchar == '#') { //target is wall
+                System.out.println("Wall("+x+","+y+")");
+                this.wall(this.probability, actor, map);
+            } else if (groundchar == '+' || groundchar == 't' || groundchar == 'T') { //target is tree
+                System.out.println("Tree("+x+","+y+")");
+                this.tree(probability, groundchar, actor, map);
+            }
         }
-
-        //check jump target
-        char groundchar=this.targetground.getDisplayChar();
-        if (groundchar=='#'){ //target is wall
-            this.wall(this.probability,actor);
-        } else if(groundchar=='+'||groundchar=='t'||groundchar=='T' ){ //target is tree
-            this.tree(probability,groundchar,actor);
-        }
+        //////System.out.println("conscious? "+actor.isConscious());]
 
         //check for successful jump
-        if (this.jumpoutcome==true){
-            return "Jump successful";
+        if (this.jumpoutcome){
+            return "Your "+actor.toString()+" succeeded for the first time in their life and jumped to location ("+x+","+y+")";
         } else{
-            return "Jump unsuccessful, character took damage because of it's incompetence.";
+            return "Your "+actor.toString()+" is the living embodiment of failure and remains at location ("+x+","+y+") after taking "+damage+" damage.";
         }
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return "Jump to climbable object "+this.directionintereseted;
     }
 
-    public void wall(Double probability, Actor actor){
+    public void wall(Double probability, Actor actor,GameMap map){
         //determine if jump action is successful
         if (probability<=0.8){ //successful jump
-            this.jumpoutcome=true;
-
+            successfuljump(actor,map);
         } else { //unsuccessful
-            actor.hurt(20);
+            uncessfuljump(actor,20);
         }
     }
 
-    public void tree(Double probability,char groundchar, Actor actor){
-        //determine if jump action is successful
+    public void tree(Double probability,char groundchar, Actor actor,GameMap map){
+        //directs to corresponding tree target
         if (groundchar=='+'){
-            if (probability<0.9){ //success
-
-            }
-            //actor takes damage
+            sprout(probability,actor,map);
         } else if (groundchar=='t'){
-
+            sapling(probability,actor,map);
         } else if (groundchar=='T'){
-
+            mature(probability,actor,map);
         }
     }
 
+    public void sprout(Double probability,Actor actor,GameMap map){
+        if (probability<0.9){ //success
+            successfuljump(actor,map);
+        } else{ //actor takes damage
+            uncessfuljump(actor,10);
+        }
+    }
 
+    public void sapling(Double probability,Actor actor,GameMap map){
+        if (probability<0.8){ //success
+            successfuljump(actor,map);
+        } else{//actor takes damage
+            uncessfuljump(actor,20);
+        }
+    }
+
+    public void mature(Double probability,Actor actor,GameMap map){
+        if (probability<0.7){ //success
+            successfuljump(actor,map);
+        } else{//actor takes damage
+            uncessfuljump(actor,30);
+        }
+    }
+
+    public void successfuljump(Actor actor,GameMap map){
+        //changes jumpoutcome to true and moves actor to target location
+        this.jumpoutcome=true;
+        map.moveActor(actor,this.targetlocation);
+    }
+
+    public void uncessfuljump(Actor actor,int value){
+        //deals damage to actor for failing jump
+        this.damage=value;
+        actor.hurt(value);
+    }
 }

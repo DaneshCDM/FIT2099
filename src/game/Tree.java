@@ -26,17 +26,16 @@ public class Tree extends Ground {
 
     @Override
     public boolean canActorEnter(Actor actor) {
-        if (actor.getDisplayChar()=='m'){
-            return true;
-        }
         return false;
     }
 
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction){
         ActionList actions = new ActionList();
-        if (actor.getDisplayChar()=='m') {
-            actions.add(new JumpAction(location, direction));
+        if (actor.getDisplayChar()=='m') {//check if actor is mario player
+            if (location.containsAnActor()==false){//check that location doesnt have another acotr
+                actions.add(new JumpAction(location, direction));
+            }
         }
         return actions;
     }
