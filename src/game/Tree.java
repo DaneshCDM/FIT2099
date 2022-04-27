@@ -1,5 +1,7 @@
 package game;
 
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.enemies.Goomba;
@@ -21,12 +23,35 @@ public class Tree extends Ground {
         tickcount=0;
     }
 
+    @Override
+    public boolean canActorEnter(Actor actor) {
+        if (actor.getDisplayChar()=='m'){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public ActionList allowableActions(Actor actor, Location location, String direction){
+        ActionList actions = new ActionList();
+        if (actor.getDisplayChar()=='m') {
+            actions.add(new JumpAction(location, direction));
+        }
+        return actions;
+    }
+
+
+
     public int getTick() {
         return tickcount;
     }
 
     @Override
     public void tick(Location location) {
+//        for (int i=0;i<location.getExits().size();i++){
+//            System.out.println(location.getExits().get(i).getName());
+//        }
+//        System.out.println(location.getExits().get(0).getName());
         if (treeState==TreeTypes.DEAD){
             return;
         }
