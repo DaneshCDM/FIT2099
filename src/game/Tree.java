@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.enemies.Goomba;
+import game.enemies.Koopa;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -39,8 +40,6 @@ public class Tree extends Ground {
         }
         return actions;
     }
-
-
 
     public int getTick() {
         return tickcount;
@@ -93,7 +92,7 @@ public class Tree extends Ground {
         if (this.tickcount>=20){ //mature stage
             treeState=TreeTypes.MATURE;
             if (probability<=0.15 & !location.containsAnActor()){ //15% chance to spawn koopa
-                //todo location.addActor(new Koopa());
+                location.addActor(new Koopa());
             }
 
             if (this.tickcount%5==0){ //turn tiles around it
