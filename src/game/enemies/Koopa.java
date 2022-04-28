@@ -6,16 +6,19 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.Resettable;
 import game.Status;
 
-public class Koopa extends Enemies {
+public class Koopa extends Enemies implements Resettable {
     IntrinsicWeapon intrinsicWeapon;
     /**
      * Constructor.
      *
      */
     public Koopa() {
+
         super("Koopa", 'K', 100);
+        this.registerInstance();
     }
 
     public IntrinsicWeapon intrinsicWeapon(){
@@ -49,5 +52,15 @@ public class Koopa extends Enemies {
             }
         }
         return super.playTurn(actions, lastAction, map, display);
+    }
+
+    @Override
+    public void resetInstance() {
+        this.hurt(101);
+    }
+
+    @Override
+    public void registerInstance() {
+        Resettable.super.registerInstance();
     }
 }
