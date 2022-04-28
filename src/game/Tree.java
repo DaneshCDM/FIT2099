@@ -11,9 +11,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-public class Tree extends Ground {
+public class Tree extends Ground implements Resettable{
     TreeTypes treeState;
     int tickcount;
+    Location location;
     /**
      * Constructor.
      *
@@ -22,6 +23,7 @@ public class Tree extends Ground {
         super('+');
         treeState=TreeTypes.SPROUT;
         tickcount=0;
+        this.registerInstance();
     }
 
     @Override
@@ -50,6 +52,7 @@ public class Tree extends Ground {
 //            System.out.println(location.getExits().get(i).getName());
 //        }
 //        System.out.println(location.getExits().get(0).getName());
+        this.location=location;
         if (treeState==TreeTypes.DEAD){
             return;
         }
@@ -122,5 +125,21 @@ public class Tree extends Ground {
         int index=random.nextInt(fertileLocations.size());
         fertileLocations.get(index).setGround(new Tree());
         //System.out.println("new tree at:"+fertileLocations.get(index).x()+" "+fertileLocations.get(index).y());
+    }
+
+    @Override
+    public void resetInstance() {
+        Random random=new Random();
+        double probability=random.nextDouble();
+        if (probability>0.5) { //chance to wither
+            treeState = TreeTypes.DEAD;
+            super.setDisplayChar('.');
+            this.location.setGround(new Dirt());
+        }
+    }
+
+    @Override
+    public void registerInstance() {
+        Resettable.super.registerInstance();
     }
 }
