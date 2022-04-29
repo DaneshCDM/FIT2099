@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.currency.Coin;
 import game.enemies.Goomba;
 import game.enemies.Koopa;
 
@@ -140,7 +141,7 @@ public class Tree extends Ground implements Resettable{
         if (tickcount>10 & tickcount<=20){ //sapling stage
             treeState=TreeTypes.SAPLING;
             if (probability<=0.1){ //10% chance to spawn $20 coin
-                //todo location.addItem(new Coin());
+                location.addItem(new Coin(20));
             }
         }
     }
