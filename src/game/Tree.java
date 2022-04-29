@@ -88,6 +88,7 @@ public class Tree extends Ground implements Resettable{
 //            System.out.println(location.getExits().get(i).getName());
 //        }
 //        System.out.println(location.getExits().size());
+
         this.location=location;
         if (treeState==TreeTypes.DEAD){
             return;
@@ -97,6 +98,8 @@ public class Tree extends Ground implements Resettable{
         Random random=new Random();
         double probability=random.nextDouble();
         this.tickcount+=1;
+        //System.out.println(this.getTick());
+        //System.out.println(this.location);
 
         if (tickcount<=10){ //sprout
             sprout(probability,location);
