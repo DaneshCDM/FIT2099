@@ -9,8 +9,12 @@ import game.enemies.Koopa;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.stream.IntStream;
 
+/**
+ * Tree class manages everything there is for a tree in the game
+ *
+ * @author Seow Zheng Hao
+ */
 public class Tree extends Ground implements Resettable{
     TreeTypes treeState;
     int tickcount;
@@ -26,11 +30,29 @@ public class Tree extends Ground implements Resettable{
         this.registerInstance();
     }
 
+    /**
+     *<p>
+     *     Returns a boolean to show whether an actor can enter
+     *</p>
+     *
+     * @param actor the Actor to check
+     * @return true if actor can enter,false otherwise.
+     */
     @Override
     public boolean canActorEnter(Actor actor) {
         return false;
     }
 
+    /**
+     * <p>
+     *     Returns all the available actions when this class is in an exit
+     * </p>
+     *
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return ActionList containing list of possible actions
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction){
         ActionList actions = new ActionList();
@@ -42,16 +64,30 @@ public class Tree extends Ground implements Resettable{
         return actions;
     }
 
+    /**
+     * <p>
+     *     Returns the number of turns this entity has existed
+     * </p>
+     *
+     * @return an integer
+     */
     public int getTick() {
         return tickcount;
     }
 
+    /**
+     * <p>
+     *     Adds one to this entity's existance counter (lets the class feel the flow of time/turns)
+     * </p>
+     *
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
 //        for (int i=0;i<location.getExits().size();i++){
 //            System.out.println(location.getExits().get(i).getName());
 //        }
-//        System.out.println(location.getExits().get(0).getName());
+//        System.out.println(location.getExits().size());
         this.location=location;
         if (treeState==TreeTypes.DEAD){
             return;
@@ -75,12 +111,28 @@ public class Tree extends Ground implements Resettable{
         }
     }
 
+    /**
+     * <p>
+     *     Method called every turn the tree is in the sprout life stage
+     * </p>
+     *
+     * @param probability chance of success
+     * @param location location of the tree on the map
+     */
     public void sprout(double probability, Location location){
         if (probability<=0.1 & !location.containsAnActor()){ //10% chance to spawn goomba
             location.addActor(new Goomba());
         }
     }
 
+    /**
+     * <p>
+     *  Method called every turn the tree is in the sapling life stage
+     * </p>
+     *
+     * @param probability chance of success
+     * @param location location of the tree on the map
+     */
     public void sapling(double probability, Location location){
         if (tickcount>10 & tickcount<=20){ //sapling stage
             treeState=TreeTypes.SAPLING;
@@ -90,6 +142,14 @@ public class Tree extends Ground implements Resettable{
         }
     }
 
+    /**
+     * <p>
+     *     Method called every turn the tree is in the mature life stage
+     * </p>
+     *
+     * @param probability chance of success
+     * @param location location of the tree on the map
+     */
     public void mature(double probability, Location location){
         if (this.tickcount>=20){ //mature stage
             treeState=TreeTypes.MATURE;
@@ -110,6 +170,13 @@ public class Tree extends Ground implements Resettable{
         }
     }
 
+    /**
+     * <p>
+     *     Method called when a mature tree can grow new trees in one of the fertile ground around it
+     * </p>
+     *
+     * @param location location of the tree on the map
+     */
     public void grownew(Location location){
         ArrayList<Location> fertileLocations=new ArrayList<>();
 
@@ -127,6 +194,12 @@ public class Tree extends Ground implements Resettable{
         //System.out.println("new tree at:"+fertileLocations.get(index).x()+" "+fertileLocations.get(index).y());
     }
 
+    /**
+     * <p>
+     *     Method called when the player chooses the resetgame action
+     * </p>
+     *
+     */
     @Override
     public void resetInstance() {
         Random random=new Random();
@@ -138,6 +211,11 @@ public class Tree extends Ground implements Resettable{
         }
     }
 
+    /**
+     * <p>
+     *     Method called in the constructor to add this class as a resettable class
+     * </p>
+     */
     @Override
     public void registerInstance() {
         Resettable.super.registerInstance();

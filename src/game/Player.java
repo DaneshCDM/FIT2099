@@ -13,7 +13,8 @@ import edu.monash.fit2099.engine.displays.Menu;
 public class Player extends Actor  {
 
 	private final Menu menu = new Menu();
-
+	public static boolean resetchecker;
+	boolean firstroundchecker=false;
 	/**
 	 * Constructor.
 	 *
@@ -24,10 +25,22 @@ public class Player extends Actor  {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		resetchecker=true;
 	}
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+		/**
+		 * reset ability
+		 * @author Seow Zheng Hao
+		 */
+		if (resetchecker){
+			//checker to make sure reset cant be called on round 1 as entities havent received a tick yet
+			if (firstroundchecker){
+				actions.add(new ResetAction());
+			} else{firstroundchecker=true;}
+		}
+
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();

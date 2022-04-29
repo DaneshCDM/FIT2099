@@ -8,6 +8,11 @@ import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.Random;
 
+/**
+ * Class that manages the choice for a player to jump to higher ground
+ *
+ * @author Seow Zheng Hao
+ */
 public class JumpAction extends Action {
 
     double probability;
@@ -19,6 +24,12 @@ public class JumpAction extends Action {
     int y;
     int damage;
 
+    /**
+     * Constructor
+     *
+     * @param location location of the jump target
+     * @param direction direction of the jump target from the actor location
+     */
     public JumpAction(Location location,String direction) {
         this.targetlocation=location;
         this.directionintereseted=direction;
@@ -26,6 +37,15 @@ public class JumpAction extends Action {
 
     }
 
+    /**
+     * <p>
+     *     Method that runs when an acotr chooses the jump option
+     * </p>
+     *
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return String containing description of the jump's success or failure
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         //sets the target ground type and x/y coordinates
@@ -56,17 +76,34 @@ public class JumpAction extends Action {
 
         //check for successful jump
         if (this.jumpoutcome){
-            return "Your "+actor.toString()+" succeeded for the first time in their life and jumped to location ("+x+","+y+")";
+            return "Your "+actor+" succeeded for the first time in their life and jumped to location ("+x+","+y+")";
         } else{
-            return "Your "+actor.toString()+" is the living embodiment of failure and remains at location ("+x+","+y+") after taking "+damage+" damage.";
+            return "Your "+actor+" is the living embodiment of failure and remains at location ("+x+","+y+") after taking "+damage+" damage.";
         }
     }
 
+    /**
+     * <p>
+     *     Method that is called by the application to show a description of the option
+     * </p>
+     *
+     * @param actor The actor performing the action.
+     * @return String containing a description of the jump action
+     */
     @Override
     public String menuDescription(Actor actor) {
         return "Jump to climbable object "+this.directionintereseted;
     }
 
+    /**
+     * <p>
+     *     Method that is called when the jump target is a wall
+     * </p>
+     *
+     * @param probability probablity of success
+     * @param actor the actor that is doing the jump action
+     * @param map the map that the jump is being done on
+     */
     public void wall(Double probability, Actor actor,GameMap map){
         //determine if jump action is successful
         if (probability<=0.8){ //successful jump
@@ -76,6 +113,16 @@ public class JumpAction extends Action {
         }
     }
 
+    /**
+     * <p>
+     *     Method that is called when the jump target is a tree
+     * </p>
+     *
+     * @param probability probablity of success
+     * @param groundchar character of the target ground
+     * @param actor the actor that is doing the jump action
+     * @param map the map that the jump is being done on
+     */
     public void tree(Double probability,char groundchar, Actor actor,GameMap map){
         //directs to corresponding tree target
         if (groundchar=='+'){
@@ -87,6 +134,15 @@ public class JumpAction extends Action {
         }
     }
 
+    /**
+     * <p>
+     *     Method that is called by the tree method when the jump target is a tree in sprout stage
+     * </p>
+     *
+     * @param probability probablity of success
+     * @param actor the actor that is doing the jump action
+     * @param map the map that the jump is being done on
+     */
     public void sprout(Double probability,Actor actor,GameMap map){
         if (probability<0.9){ //success
             successfuljump(actor,map);
@@ -95,6 +151,15 @@ public class JumpAction extends Action {
         }
     }
 
+    /**
+     * <p>
+     *     Method that is called by the tree method when the jump target is a tree in sapling stage
+     * </p>
+     *
+     * @param probability probablity of success
+     * @param actor the actor that is doing the jump action
+     * @param map the map that the jump is being done on
+     */
     public void sapling(Double probability,Actor actor,GameMap map){
         if (probability<0.8){ //success
             successfuljump(actor,map);
@@ -103,6 +168,15 @@ public class JumpAction extends Action {
         }
     }
 
+    /**
+     * <p>
+     *     Method that is called by the tree method when the jump target is a tree in mature stage
+     * </p>
+     *
+     * @param probability probablity of success
+     * @param actor the actor that is doing the jump action
+     * @param map the map that the jump is being done on
+     */
     public void mature(Double probability,Actor actor,GameMap map){
         if (probability<0.7){ //success
             successfuljump(actor,map);
@@ -111,12 +185,28 @@ public class JumpAction extends Action {
         }
     }
 
+    /**
+     * <p>
+     *     Method that is called when the jump is successful to move the actor
+     * </p>
+     *
+     * @param actor the actor that is doing the jump action
+     * @param map the map that the jump is being done on
+     */
     public void successfuljump(Actor actor,GameMap map){
         //changes jumpoutcome to true and moves actor to target location
         this.jumpoutcome=true;
         map.moveActor(actor,this.targetlocation);
     }
 
+    /**
+     * <p>
+     *     Method that is called when the jump is unsuccessful to deal damage to the actor
+     * </p>
+     *
+     * @param actor the actor that is doing the jump action
+     * @param value the integer value as damage done to actor
+     */
     public void uncessfuljump(Actor actor,int value){
         //deals damage to actor for failing jump
         this.damage=value;
