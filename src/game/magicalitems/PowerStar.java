@@ -3,16 +3,18 @@ package game.magicalitems;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Resettable;
 import game.Status;
 
 import java.util.List;
 
-public class PowerStar extends Item {
+public class PowerStar extends Item implements Resettable {
     PowerStar powerStar = new PowerStar("PowerStar", '*', false);
     MagicalItems magicalItems = new MagicalItems(powerStar);
     int invincible_effect_lasts = 10;
     int fadingDuration = 10;
     int flag = 0;
+    Actor actor;
     /***
      * Constructor.
      *  @param name the name of this Item
@@ -20,7 +22,9 @@ public class PowerStar extends Item {
      * @param portable true if and only if the Item can be picked up
      */
     public PowerStar(String name, char displayChar, boolean portable) {
+
         super(name, displayChar, portable);
+        this.registerInstance();
     }
     public void actorUsesItem(Actor actor) {
         actor.hasCapability(Status.TALL);
@@ -59,5 +63,15 @@ public class PowerStar extends Item {
         if (fadingDuration == 0){
             currentLocation.removeItem(powerStar);
         }
+    }
+
+    @Override
+    public void resetInstance() {
+        actor.removeCapability(Status.INVINCIBLE);
+    }
+
+    @Override
+    public void registerInstance() {
+        Resettable.super.registerInstance();
     }
 }
