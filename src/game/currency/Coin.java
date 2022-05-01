@@ -2,7 +2,9 @@ package game.currency;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Dirt;
 import game.Resettable;
 
 /**
@@ -10,7 +12,7 @@ import game.Resettable;
  *  *
  *  * @author Danesh Mariapan
  */
-public class Coin extends Item{
+public class Coin extends Item implements Resettable{
 
     /**
      * Attributes / Variables of the Coin Class
@@ -19,6 +21,7 @@ public class Coin extends Item{
     private static final Character DISPLAY_CHARACTER = '$';
     private static final boolean PORTABLE = true;
     private int value;
+    Location location;
 
     /**
      * Coin Constructor
@@ -27,6 +30,7 @@ public class Coin extends Item{
     public Coin(int value){
         super(NAME, DISPLAY_CHARACTER, PORTABLE);
         this.value = value;
+        this.registerInstance();
     }
 
     // Getter for Coin Value
@@ -40,8 +44,8 @@ public class Coin extends Item{
     }
 
     @Override
-    public void tick(Location currentLocation, Actor actor) {
-        this.tick(currentLocation);
+    public void tick(Location currentLocation) {
+        this.location = currentLocation;
     }
 
     // Returns "Coin ($value)
@@ -55,14 +59,15 @@ public class Coin extends Item{
         return this.toString();
     }
 
+    @Override
+    public void resetInstance() {
+        this.location.removeItem(this);
+    }
 
-//    @Override
-//    public void resetInstance(Location location) {
-//        location.removeItem(this);
-//    }
-//
-//    @Override
-//    public void registerInstance() {
-//        Resettable.super.registerInstance();
-//    }
+    @Override
+    public void registerInstance() {
+        Resettable.super.registerInstance();
+    }
+
+
 }
