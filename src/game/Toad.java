@@ -2,6 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
@@ -34,9 +35,18 @@ public class Toad extends Actor {
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        return null;
+        return new DoNothingAction();
     }
 
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+        ActionList newActions = new ActionList(new SpeakAction(this)); //TODO: add speak action
+//        for (Item shopItem: this.shopHashMap.keySet()) {
+//            int cost = this.shopHashMap.get(shopItem);
+//            newActions.add(new TradeAction(ware, cost));
+//        }
 
+        return newActions;
+    }
 
 }

@@ -24,7 +24,7 @@ public class SpeakAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
 
-        int randomInt = Utils.randomVal();
+        int randomIndex = Utils.randomIndex();
         List<String> monologueSentences = Arrays.asList(Monologue.getMonologueSentences());
 
         for(int i = 0; i < actor.getInventory().size(); i ++){
@@ -33,7 +33,7 @@ public class SpeakAction extends Action {
             }
         }
 
-        return (target) + ": " + monologueSentences.get(randomInt);
+        return (target) + ": " + monologueSentences.get(randomIndex);
     }
 
     @Override
