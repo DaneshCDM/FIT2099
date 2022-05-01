@@ -11,6 +11,9 @@ import edu.monash.fit2099.engine.positions.Location;
  */
 public class Coin extends Item {
 
+    /**
+     * Attributes / Variables of the Coin Class
+     */
     private static final String NAME = "Coin";
     private static final Character DISPLAY_CHARACTER = '$';
     private static final boolean PORTABLE = true;
