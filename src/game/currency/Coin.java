@@ -3,13 +3,14 @@ package game.currency;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Resettable;
 
 /**
  *  * Coin class manages everything to do with a Coin Object
  *  *
  *  * @author Danesh Mariapan
  */
-public class Coin extends Item {
+public class Coin extends Item{
 
     /**
      * Attributes / Variables of the Coin Class
@@ -55,4 +56,13 @@ public class Coin extends Item {
     }
 
 
+//    @Override
+//    public void resetInstance(Location location) {
+//        location.removeItem(this);
+//    }
+//
+//    @Override
+//    public void registerInstance() {
+//        Resettable.super.registerInstance();
+//    }
 }

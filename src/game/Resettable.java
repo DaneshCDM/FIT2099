@@ -1,5 +1,7 @@
 package game;
 
+import edu.monash.fit2099.engine.positions.Location;
+
 public interface Resettable {
     /**
      * Allows any classes that use this interface to reset abilities, attributes, and/or items.
@@ -7,6 +9,8 @@ public interface Resettable {
      * TODO: execute this method in a reset manager later.
      */
     void resetInstance();
+
+    void resetInstance(Location location);
 
     /**
      * a default interface method that register current instance to the Singleton manager.
