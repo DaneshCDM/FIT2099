@@ -28,8 +28,8 @@ public class Toad extends Actor {
     public Toad() {
         super(NAME, DISPLAY_CHARACTER, HIT_POINTS);
         this.shopHashMap.put(new Wrench(), WRENCH_COST);
-//        this.shopHashMap.put(new SuperMushroom("SuperMushroom", '^', false), SUPER_MUSHROOM_COST);
-//        this.shopHashMap.put(new PowerStar("PowerStar", '*', false), POWER_STAR_COST);
+        this.shopHashMap.put(new SuperMushroom("SuperMushroom", '^', false), SUPER_MUSHROOM_COST);
+        this.shopHashMap.put(new PowerStar("PowerStar", '*', false), POWER_STAR_COST);
     }
 
     @Override
@@ -38,16 +38,5 @@ public class Toad extends Actor {
     }
 
 
-
-
-//    @Override
-//    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-//        ActionList retActions = new ActionList(new SpeakAction(this)); //TODO: add speak action
-//        for (Item ware: this.wares.keySet()) {
-//            Coin cost = this.wares.get(ware);
-//            retActions.add(new TradeAction(ware, cost));
-//        }
-//        return retActions;
-//    }
 
 }

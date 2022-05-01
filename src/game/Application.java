@@ -53,7 +53,8 @@ public class Application {
 
 			// Part of REQ 5:
 			// Toad can be added Manually ("Somewhere in the Floor + Walls area, near Mario when the game starts")
-			gameMap.at(42, 11).addActor(new Toad());
+//			world.addPlayer(new Toad(), gameMap.at(42, 11));
+//			gameMap.at(42, 11).addActor(new Toad());
 
 			world.run();
 
