@@ -1,0 +1,42 @@
+package game;
+
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
+
+import java.util.HashMap;
+
+public class Toad extends Actor {
+
+    private static final String NAME = "Toad";
+    private static final Character DISPLAY_CHARACTER = 'O';
+    private static final int HIT_POINTS = 1;
+    private final HashMap<Item, Integer> shopHashMap = new HashMap<Item, Integer>();
+
+    private static final int POWER_STAR_COST = 600;
+    private static final int SUPER_MUSHROOM_COST = 400;
+    private static final int WRENCH_COST = 200;
+
+    /**
+     * Constructor.
+     *
+     * @param name        the name of the Actor
+     * @param displayChar the character that will represent the Actor in the display
+     * @param hitPoints   the Actor's starting hit points
+     */
+    public Toad() {
+        super(NAME, DISPLAY_CHARACTER, HIT_POINTS);
+//        this.shopHashMap.put()
+    }
+
+    @Override
+    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        return null;
+    }
+
+
+
+}

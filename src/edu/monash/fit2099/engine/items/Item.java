@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.capabilities.CapabilitySet;
 import edu.monash.fit2099.engine.capabilities.Capable;
 import edu.monash.fit2099.engine.displays.Printable;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 
@@ -168,4 +169,5 @@ public abstract class Item implements Printable, Capable {
 	 * @return a list of unmodifiable capabilities
 	 */
 	public List<Enum<?>> capabilitiesList() { return capabilitySet.capabilitiesList();	}
+
 }

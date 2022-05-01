@@ -2,9 +2,9 @@ package game.currency;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.Dirt;
 import game.Resettable;
 
 /**
@@ -12,7 +12,7 @@ import game.Resettable;
  *  *
  *  * @author Danesh Mariapan
  */
-public class Coin extends Item implements Resettable{
+public class Coin extends Item implements Resettable {
 
     /**
      * Attributes / Variables of the Coin Class
@@ -25,9 +25,10 @@ public class Coin extends Item implements Resettable{
 
     /**
      * Coin Constructor
+     *
      * @param value the currency value that the Coin has
      */
-    public Coin(int value){
+    public Coin(int value) {
         super(NAME, DISPLAY_CHARACTER, PORTABLE);
         this.value = value;
         this.registerInstance();
@@ -55,10 +56,14 @@ public class Coin extends Item implements Resettable{
     }
 
     // Returns the type of Coin ($value)
-    public String getCoinType(){
+    public String getCoinType() {
         return this.toString();
     }
 
+    /**
+     * Overriding Resettable Class methods
+     * To remove Coins from the Map, when Map gets reset
+     */
     @Override
     public void resetInstance() {
         this.location.removeItem(this);
@@ -69,5 +74,105 @@ public class Coin extends Item implements Resettable{
         Resettable.super.registerInstance();
     }
 
+    @Override
+    public PickUpItemAction getPickUpAction(Actor actor) {
+        return super.getPickUpAction(actor);
+    }
+
+    //    @Override
+//    public PickUpItemAction getPickUpAction(Actor actor) {
+//        this.location.removeItem(this);
+//
+//        for (int i = 0; i < actor.getInventory().size(); i++) {
+//            if (actor.getInventory().get(i) instanceof CoinWallet) {
+//
+//                // Add Coin to Player's Wallet
+//                ((CoinWallet) actor.getInventory().get(i)).addCoin(this);
+//                // Show Player's Current Wallet Balance
+//                ((CoinWallet) actor.getInventory().get(i)).displayWalletBalance();
+//            }
+//        }
+//        return null;
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //    @Override
+//    public PickUpItemAction getPickUpAction(Actor actor) {
+//        return super.getPickUpAction(actor);
+//    }
+
+//    public CoinPickUpItemAction getPickUpAction(Actor actor){
+//        return super.getCoin
+//    }
+//
+//    public CoinPickUpItemAction getCoinPickUpAction(Actor actor) {
+//        return new CoinPickUpItemAction(this);
+//    }
+
+//    @Override
+//    public PickUpItemAction getPickUpAction(Actor actor) {
+//        return super.getPickUpAction(actor);
+//    }
+
+
+
+
+
+
+
+
+    //    @Override
+//    public PickUpItemAction getPickUpAction(Actor actor) {
+//
+//
+//
+//
+//        for (int i = 0; i < actor.getInventory().size(); i++) {
+//            if (actor.getInventory().get(i) instanceof CoinWallet) {
+//
+//                // Add Coin to Player's Wallet
+//                ((CoinWallet) actor.getInventory().get(i)).addCoin(this);
+//                // Show Player's Current Wallet Balance
+//                ((CoinWallet) actor.getInventory().get(i)).displayWalletBalance();
+//            }
+//        }
+//        return super.getPickUpAction(actor);
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
+
+
+//    @Override
+//    public PickUpItemAction getPickUpAction(Actor actor) {
+//
+//
+//
+//
+//        return super.getPickUpAction(actor);
+//    }
+//}
