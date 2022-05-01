@@ -16,7 +16,6 @@ public class Koopa extends Enemies implements Resettable {
      *
      */
     public Koopa() {
-
         super("Koopa", 'K', 100);
         this.registerInstance();
     }

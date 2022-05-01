@@ -51,6 +51,10 @@ public class Application {
 //			// FIXME: the Goomba should be generated from the Tree
 //			gameMap.at(35, 10).addActor(new Goomba());
 
+			// Part of REQ 5:
+			// Toad can be added Manually ("Somewhere in the Floor + Walls area, near Mario when the game starts")
+			gameMap.at(42, 11).addActor(new Toad());
+
 			world.run();
 
 	}
