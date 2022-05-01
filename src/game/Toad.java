@@ -28,8 +28,8 @@ public class Toad extends Actor {
     public Toad() {
         super(NAME, DISPLAY_CHARACTER, HIT_POINTS);
         this.shopHashMap.put(new Wrench(), WRENCH_COST);
-//        this.shopHashMap.put(new SuperMushroom("SuperMushroom", '^', false), SUPER_MUSHROOM_COST);
-//        this.shopHashMap.put(new PowerStar("PowerStar", '*', false), POWER_STAR_COST);
+        this.shopHashMap.put(new SuperMushroom("SuperMushroom", '^', false), SUPER_MUSHROOM_COST);
+        this.shopHashMap.put(new PowerStar("PowerStar", '*', false), POWER_STAR_COST);
     }
 
     @Override
