@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.magicalitems.PowerStar;
+import game.magicalitems.SuperMushroom;
 
 import java.util.HashMap;
 
@@ -22,14 +24,11 @@ public class Toad extends Actor {
 
     /**
      * Constructor.
-     *
-     * @param name        the name of the Actor
-     * @param displayChar the character that will represent the Actor in the display
-     * @param hitPoints   the Actor's starting hit points
      */
     public Toad() {
         super(NAME, DISPLAY_CHARACTER, HIT_POINTS);
-//        this.shopHashMap.put()
+        this.shopHashMap.put(new SuperMushroom("SuperMushroom", '^', false), SUPER_MUSHROOM_COST);
+        this.shopHashMap.put(new PowerStar("PowerStar", '*', false), POWER_STAR_COST);
     }
 
     @Override
