@@ -9,8 +9,8 @@ import game.Status;
 import java.util.List;
 
 public class PowerStar extends Item implements Resettable {
-    PowerStar powerStar = new PowerStar("PowerStar", '*', false);
-    MagicalItems magicalItems = new MagicalItems(powerStar);
+//    PowerStar powerStar = new PowerStar("PowerStar", '*', false);
+    MagicalItems magicalItems = new MagicalItems(this);
     int invincible_effect_lasts = 10;
     int fadingDuration = 10;
     int flag = 0;
@@ -32,7 +32,7 @@ public class PowerStar extends Item implements Resettable {
         List<Item> i = actor.getInventory();
         for (int a = 0; a < i.size(); a++){
             if ((i.get(a) instanceof PowerStar) == false){
-                actor.addItemToInventory(powerStar);
+                actor.addItemToInventory(this);
             }
         }
     }
@@ -52,16 +52,16 @@ public class PowerStar extends Item implements Resettable {
     }
     public void invincible_effect_lasts(Actor actor){
         if (invincible_effect_lasts <= 0){
-            actor.removeItemFromInventory(powerStar);
+            actor.removeItemFromInventory(this);
         }
     }
 
     @Override
     public void tick(Location currentLocation) {
-        powerStar.hasCapability(Status.FADINGDURATION);
+        this.hasCapability(Status.FADINGDURATION);
         fadingDuration -= 1;
         if (fadingDuration == 0){
-            currentLocation.removeItem(powerStar);
+            currentLocation.removeItem(this);
         }
     }
 

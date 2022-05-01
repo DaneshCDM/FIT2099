@@ -8,8 +8,8 @@ import game.Status;
 import java.util.List;
 
 public class SuperMushroom extends Item implements Resettable {
-    SuperMushroom superMushroom = new SuperMushroom("SuperMushroom", '^', false);
-    MagicalItems magicalItems = new MagicalItems(superMushroom);
+//    SuperMushroom superMushroom = new SuperMushroom("SuperMushroom", '^', false);
+    MagicalItems magicalItems = new MagicalItems(this);
     Actor actor;
     /***
      * Constructor.
@@ -27,7 +27,7 @@ public class SuperMushroom extends Item implements Resettable {
         List<Item> i = actor.getInventory();
         for (int a = 0; a < i.size(); a++){
             if ((i.get(a) instanceof SuperMushroom) == false){
-                actor.addItemToInventory(superMushroom);
+                actor.addItemToInventory(this);
             }
         }
     }
@@ -35,7 +35,7 @@ public class SuperMushroom extends Item implements Resettable {
     public void actorUsesItem(Actor actor) {
         actor.hasCapability(Status.TALL);
         actor.increaseMaxHp(50);
-        actor.removeItemFromInventory(superMushroom);
+        actor.removeItemFromInventory(this);
     }
 
     @Override
