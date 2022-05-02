@@ -7,8 +7,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import java.util.Arrays;
 import java.util.List;
 
-import static game.Monologue.S1;
-import static game.Monologue.S2;
+import static game.Monologue.*;
 
 public class SpeakAction extends Action {
 
@@ -33,7 +32,8 @@ public class SpeakAction extends Action {
         // Remove 1st Sentence if Player has Wrench
         for(int i = 0; i < actor.getInventory().size(); i ++){
             if (actor.getInventory().get(i).toString().equals("Wrench")){
-                monologueSentences.remove(S1);
+                monologueSentences.remove(Monologue.S1);
+//                System.out.println(monologueSentences);
                 randomIndex = Utils.randomIndexThree();
                 flagOneRemoved = false;
             }
@@ -41,11 +41,11 @@ public class SpeakAction extends Action {
 
         // Remove 2nd Sentence if Player has Power Star Effect
         if (actor.hasCapability(Status.INVINCIBLE) && !flagOneRemoved){
-            monologueSentences.remove(S2);
+            monologueSentences.remove(Monologue.S2);
             randomIndex = Utils.randomIndexTwo();
         }
         else if(actor.hasCapability(Status.INVINCIBLE)){
-            monologueSentences.remove(S2);
+            monologueSentences.remove(Monologue.S2);
             randomIndex = Utils.randomIndexThree();
         }
 

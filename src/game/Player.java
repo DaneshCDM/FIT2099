@@ -21,6 +21,7 @@ public class Player extends Actor  {
 	public static CoinWallet playerCoinWallet = new CoinWallet();
 
 
+
 	/**
 	 * Constructor.
 	 *
@@ -34,6 +35,10 @@ public class Player extends Actor  {
 		resetchecker=true;
 
 		this.addItemToInventory(playerCoinWallet);
+
+		// Testing SpeakAction
+//		this.addItemToInventory(new Wrench());
+//		this.addCapability(Status.INVINCIBLE);
 	}
 
 	@Override
