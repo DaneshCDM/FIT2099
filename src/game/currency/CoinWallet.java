@@ -7,7 +7,10 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Player;
 
-
+/**
+ *  Coin Wallet manages everything to do with a Coin values and Player Balance
+ *  @author Danesh Mariapan
+ */
 public class CoinWallet extends Item{
 
     /**
@@ -30,13 +33,18 @@ public class CoinWallet extends Item{
         this.hashMap = new HashMap<Integer, Coin>();
         this.noCoins = 0;
 
-        this.addCoin(new Coin(100));
-        this.addCoin(new Coin(100));
-        this.addCoin(new Coin(100));
-        this.addCoin(new Coin(100));
-        this.addCoin(new Coin(100));
+        // For Testing Trading
+//        this.addCoin(new Coin(100));
+//        this.addCoin(new Coin(100));
+//        this.addCoin(new Coin(100));
+//        this.addCoin(new Coin(100));
+//        this.addCoin(new Coin(100));
     }
 
+    /**
+     * addCoin Method - Adds Coin object to HashMap
+     * @param newCoin Coin Object
+     */
     public void addCoin(Coin newCoin){
         // Increase Coin count
         noCoins += 1;
@@ -44,6 +52,10 @@ public class CoinWallet extends Item{
         hashMap.put(noCoins, newCoin);
     }
 
+    /**
+     * Displays the current Player's Wallet Balance with number of Coins stored shown
+     * @return Player's Balance Integer
+     */
     public int displayWalletBalance(){
         int totalWalletBalance = 0;
         int numberCoins = 0;
@@ -70,18 +82,34 @@ public class CoinWallet extends Item{
 
     // Setters and Getters
 
+    /**
+     * HashMap getter
+     * @return hashMap
+     */
     public HashMap<Integer, Coin> getHashMap() {
         return hashMap;
     }
 
+    /**
+     * HashMap setter
+     * @param hashMap of <Integer,Coin></Integer,Coin> type
+     */
     public void setHashMap(HashMap<Integer, Coin> hashMap) {
         this.hashMap = hashMap;
     }
 
+    /**
+     * Getter for Coin ID (order of coins picked up)
+     * @return Coin Number Integer
+     */
     public int getNoCoins() {
         return noCoins;
     }
 
+    /**
+     * Setter for Coin ID (order of coins picked up)
+     * @param noCoins Coin Number Integer
+     */
     public void setNoCoins(int noCoins) {
         this.noCoins = noCoins;
     }

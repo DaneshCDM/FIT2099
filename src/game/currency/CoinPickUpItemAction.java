@@ -6,13 +6,19 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 
+/**
+ *  CoinPickUpItemAction manages pick up method for Coin
+ *  @author Danesh Mariapan
+ */
 public class CoinPickUpItemAction extends Action {
 
+    /**
+     * Coin Object Attribute
+     */
     private final Coin coin;
 
-
     /**
-     * Constructor.
+     * Constructor
      *
      * @param coin the item to pick up
      */
@@ -20,6 +26,12 @@ public class CoinPickUpItemAction extends Action {
         this.coin = coin;
     }
 
+    /**
+     * Add our own Functionality - add coins to Wallet and display Balance
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return String menu description
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
 
@@ -40,8 +52,14 @@ public class CoinPickUpItemAction extends Action {
 
     }
 
+    /**
+     *
+     * @param actor The actor performing the action.
+     * @return String description of Action taken place
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " picks up the " + coin;
     }
+
 }

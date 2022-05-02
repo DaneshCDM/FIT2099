@@ -13,9 +13,8 @@ import game.Resettable;
 import java.util.List;
 
 /**
- *  * Coin class manages everything to do with a Coin Object
- *  *
- *  * @author Danesh Mariapan
+ *  Coin class manages everything to do with a Coin Object
+ *  @author Danesh Mariapan
  */
 public class Coin extends Item implements Resettable {
 
@@ -44,16 +43,28 @@ public class Coin extends Item implements Resettable {
         addAction(coinPickUpItemAction);
     }
 
+    /**
+     * Getter for Coin Value
+     * @return value
+     */
     // Getter for Coin Value
     public int getValue() {
         return value;
     }
 
+    /**
+     * Setter for Coin Value
+     * @param value Integer value of Coin
+     */
     // Setter for Coin Value
     public void setValue(int value) {
         this.value = value;
     }
 
+    /**
+     * Tick, to experience passage of time
+     * @param currentLocation The location of the ground on which we lie.
+     */
     @Override
     public void tick(Location currentLocation) {
         this.location = currentLocation;
@@ -62,13 +73,19 @@ public class Coin extends Item implements Resettable {
         }
     }
 
-    // Returns "Coin ($value)
+    /**
+     * toString method
+     * @return "Coin ($value)"
+     */
     @Override
     public String toString() {
         return super.toString() + " " + "(" + this.getDisplayChar() + this.getValue() + ")";
     }
 
-    // Returns the type of Coin ($value)
+    /**
+     * getCoinType method
+     * @return the toString method
+     */
     public String getCoinType() {
         return this.toString();
     }
@@ -82,16 +99,29 @@ public class Coin extends Item implements Resettable {
         resetchecker=true;
     }
 
+    /**
+     * register Instance
+     */
     @Override
     public void registerInstance() {
         Resettable.super.registerInstance();
     }
 
+    /**
+     * Here we want to cancel the Item's Class Functionality implementation
+     * @param actor that picks up
+     * @return null
+     */
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
         return null;
     }
 
+    /**
+     * Here we want to cancel the Item's Class Functionality implementation
+     * @param actor that picks up
+     * @return null
+     */
     @Override
     public DropItemAction getDropAction(Actor actor) {
         return null;
