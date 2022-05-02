@@ -34,11 +34,11 @@ public class CoinWallet extends Item{
         this.noCoins = 0;
 
         // For Testing Trading
-//        this.addCoin(new Coin(100));
-//        this.addCoin(new Coin(100));
-//        this.addCoin(new Coin(100));
-//        this.addCoin(new Coin(100));
-//        this.addCoin(new Coin(100));
+        this.addCoin(new Coin(100));
+        this.addCoin(new Coin(100));
+        this.addCoin(new Coin(100));
+        this.addCoin(new Coin(100));
+        this.addCoin(new Coin(100));
     }
 
     /**
