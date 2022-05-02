@@ -40,7 +40,7 @@ public class SuperMushroom extends Item implements Resettable {
 
     @Override
     public void resetInstance() {
-        actor.removeCapability(Status.TALL);
+        removeCapability(Status.TALL);
     }
 
     @Override

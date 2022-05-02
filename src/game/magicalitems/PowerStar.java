@@ -67,7 +67,7 @@ public class PowerStar extends Item implements Resettable {
 
     @Override
     public void resetInstance() {
-        actor.removeCapability(Status.INVINCIBLE);
+        removeCapability(Status.INVINCIBLE);
     }
 
     @Override
