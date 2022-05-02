@@ -1,11 +1,16 @@
 package game.currency;
 
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Resettable;
+
+import java.util.List;
 
 /**
  *  * Coin class manages everything to do with a Coin Object
@@ -32,6 +37,9 @@ public class Coin extends Item implements Resettable {
         super(NAME, DISPLAY_CHARACTER, PORTABLE);
         this.value = value;
         this.registerInstance();
+
+        Action coinPickUpItemAction = new CoinPickUpItemAction(this);
+        addAction(coinPickUpItemAction);
     }
 
     // Getter for Coin Value
@@ -76,8 +84,54 @@ public class Coin extends Item implements Resettable {
 
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
-        return super.getPickUpAction(actor);
+        return null;
     }
+
+    @Override
+    public DropItemAction getDropAction(Actor actor) {
+        return null;
+    }
+
+    //    @Override
+//    public PickUpItemAction getPickUpAction(Actor actor) {
+////        super.getPickUpAction(actor);
+//
+//        for(int i = 0; i < actor.getInventory().size(); i++) {
+//
+//            // Find Wallet in Inventory
+//            if(actor.getInventory().get(i) instanceof CoinWallet) {
+//                // Add Coin to Wallet
+//                ((CoinWallet) actor.getInventory().get(i)).addCoin(this);
+//                ((CoinWallet) actor.getInventory().get(i)).displayWalletBalance();
+//            }
+//
+//        }
+//        return super.getPickUpAction(actor);
+//    }
+
+
+//    @Override
+//    public List<Action> getAllowableActions() {
+//        return super.getAllowableActions();
+//    }
+
+
+
+//    @Override
+//    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+//        ActionList newActions = new ActionList(new CoinPickUpItemAction(this)); //TODO: add speak action
+////        for (Item shopItem: this.shopHashMap.keySet()) {
+////            int cost = this.shopHashMap.get(shopItem);
+////            newActions.add(new TradeAction(ware, cost));
+////        }
+//
+//        return newActions;
+//    }
+
+
+
+
+}
 
     //    @Override
 //    public PickUpItemAction getPickUpAction(Actor actor) {
@@ -164,7 +218,7 @@ public class Coin extends Item implements Resettable {
 
 
 
-}
+
 
 
 //    @Override

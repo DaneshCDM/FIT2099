@@ -38,8 +38,8 @@ public class CoinWallet extends Item{
         hashMap.put(noCoins, newCoin);
     }
 
-    public void displayWalletBalance(){
-        int totalWalletBalance = 0;
+    public int displayWalletBalance(){
+        int totalWalletBalance = 20;
 
         if(noCoins > 0){
             for(int i = 1; i < hashMap.size(); i++) {
@@ -48,13 +48,9 @@ public class CoinWallet extends Item{
             }
         }
 
-//        for(int i = 1; i < hashMap.size(); i++) {
-//            int ownedCoinValue = (getHashMap().get(i).getValue());
-//            totalWalletBalance += ownedCoinValue;
-//        }
-
-        System.out.println("Player's Current Total Wallet Balance is: " + totalWalletBalance + " \n"
-                + "With a total of: " + getNoCoins() + "Coins, in Player's Wallet");
+        System.out.println("Player's Current Total Wallet Balance is: " + "$" + totalWalletBalance + " \n"
+                + "With a total of: " + getNoCoins() + " Coins, in Player's Wallet");
+        return totalWalletBalance;
     }
 
 
@@ -75,6 +71,13 @@ public class CoinWallet extends Item{
     public void setNoCoins(int noCoins) {
         this.noCoins = noCoins;
     }
+
+
+
+
+
+
+
 
 //    @Override
 //    public String execute(Actor actor, GameMap map) {

@@ -1,10 +1,12 @@
 package game.currency;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 
-public class CoinPickUpItemAction extends PickUpItemAction {
+public class CoinPickUpItemAction extends Action {
 
     private final Coin coin;
 
@@ -15,11 +17,8 @@ public class CoinPickUpItemAction extends PickUpItemAction {
      * @param coin the item to pick up
      */
     public CoinPickUpItemAction(Coin coin) {
-        super(coin);
         this.coin = coin;
     }
-
-
 
     @Override
     public String execute(Actor actor, GameMap map) {

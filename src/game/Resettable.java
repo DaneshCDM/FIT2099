@@ -1,6 +1,10 @@
 package game;
 
 
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
+
 public interface Resettable {
     /**
      * Allows any classes that use this interface to reset abilities, attributes, and/or items.
@@ -17,4 +21,5 @@ public interface Resettable {
     default void registerInstance(){
         ResetManager.getInstance().appendResetInstance(this);
     }
+
 }

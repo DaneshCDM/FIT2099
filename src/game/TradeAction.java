@@ -18,6 +18,23 @@ public class TradeAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
+
+        int balance = 0;
+        String result = "You don't have enough coins!";
+
+        for(int i = 0; i < actor.getInventory().size(); i++){
+
+            if(actor.getInventory().get(i) instanceof CoinWallet){
+                balance = ((CoinWallet) actor.getInventory().get(i)).displayWalletBalance();
+            }
+        }
+
+        if(balance >= price){
+            actor.addItemToInventory(tradeItem);
+
+        }
+
+
         return null;
     }
 
