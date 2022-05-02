@@ -7,6 +7,7 @@ public class Monologue {
     public static final String S3 = "The Princess is depending on you! You are our only hope";
     public static final String S4 = "Being imprisoned in these walls can drive a fungus crazy :(";
 
+
     private static final String[] MONOLOGUE_SENTENCES = {
             S1,
             S2,
