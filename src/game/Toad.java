@@ -40,11 +40,11 @@ public class Toad extends Actor {
 
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList newActions = new ActionList(new SpeakAction(this)); //TODO: add speak action
-//        for (Item shopItem: this.shopHashMap.keySet()) {
-//            int cost = this.shopHashMap.get(shopItem);
-//            newActions.add(new TradeAction(ware, cost));
-//        }
+        ActionList newActions = new ActionList(new SpeakAction(this));
+        for (Item shopItem: this.shopHashMap.keySet()) {
+            int cost = this.shopHashMap.get(shopItem);
+            newActions.add(new TradeAction(shopItem, cost));
+        }
 
         return newActions;
     }

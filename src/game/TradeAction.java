@@ -20,6 +20,8 @@ public class TradeAction extends Action {
     public String execute(Actor actor, GameMap map) {
 
         int balance = 0;
+        int deduct = 0;
+        int remainingBalance = 0;
         String result = "You don't have enough coins!";
 
         for(int i = 0; i < actor.getInventory().size(); i++){
@@ -32,71 +34,32 @@ public class TradeAction extends Action {
         if(balance >= price){
             actor.addItemToInventory(tradeItem);
 
+            int k = ((CoinWallet) actor.getInventory().get(0)).getHashMap().size() + 1;
+            while(deduct < price){
+                if(actor.getInventory().get(0) instanceof CoinWallet){
+
+                    if (((CoinWallet) actor.getInventory().get(0)).getHashMap().get(k)!= null){
+                        deduct += ((CoinWallet) actor.getInventory().get(0)).getHashMap().get(k).getValue();
+                        ((CoinWallet) actor.getInventory().get(0)).getHashMap().remove(k);
+                    }
+                }
+                k--;
+            }
+
+            remainingBalance = balance - deduct;
+            System.out.println("Player's remaining Wallet Balance is: " + "$" + remainingBalance);
+            result = actor + " has purchased " + tradeItem + " for " + "$" + price;
         }
 
-
-        return null;
+        return result;
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return "Buy " + tradeItem + " for " + "$" + price;
     }
 
-//    @Override
-//    public String execute(Actor actor, GameMap map) {
-//
-//        String insufficientCoins = "You don't have enough coins!";
-//
-//        for (int i = 0; i < actor.getInventory().size(); i++) {
-//            if (actor.getInventory().get(i) instanceof CoinWallet) {
-//
-//            }
-//
-//        return null;
-//    }
 
-//    @Override
-//    public String menuDescription(Actor actor) {
-//        return null;
-//    }
-
-
-
-
-
-
-
-
-
-//    public class TradeAction extends Action {
-//        private final Item tradeItem;
-//        private final Coin price;
-//
-//        public TradeAction(Item tradeItem, Coin price) {
-//            this.tradeItem = tradeItem;
-//            this.price = price;
-//        }
-//
-//        @Override
-//        public String execute(Actor actor, GameMap map) {
-//            String result = "You don't have enough coins!";
-//
-//            WorldBank worldBank = WorldBank.getInstance();
-//            Coin actorBalance = worldBank.getBalance(actor, price.getCoinType());
-//            if (actorBalance != null && actorBalance.getValue() >= price.getValue()) {
-//                actor.addItemToInventory(tradeItem);
-//                worldBank.spendCoin(actor, actorBalance);
-//                result = actor + " has purchased " + tradeItem + " for " + price.getDisplayChar() + price.getValue() + ".";
-//            }
-//
-//            return result;
-//        }
-//
-//        @Override
-//        public String menuDescription(Actor actor) {
-//            return actor + " buys " + tradeItem.toString().split("-", 2)[0] + " (" + price.getDisplayChar() + price.getValue() + ")";
-//        }
 
 
 }

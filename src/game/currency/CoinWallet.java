@@ -29,6 +29,12 @@ public class CoinWallet extends Item{
         super(NAME, DISPLAY_CHARACTER, PORTABLE);
         this.hashMap = new HashMap<Integer, Coin>();
         this.noCoins = 0;
+
+        this.addCoin(new Coin(100));
+        this.addCoin(new Coin(100));
+        this.addCoin(new Coin(100));
+        this.addCoin(new Coin(100));
+        this.addCoin(new Coin(100));
     }
 
     public void addCoin(Coin newCoin){
@@ -39,17 +45,25 @@ public class CoinWallet extends Item{
     }
 
     public int displayWalletBalance(){
-        int totalWalletBalance = 20;
+        int totalWalletBalance = 0;
+        int numberCoins = 0;
 
-        if(noCoins > 0){
-            for(int i = 1; i < hashMap.size(); i++) {
-                int ownedCoinValue = (getHashMap().get(i).getValue());
-                totalWalletBalance += ownedCoinValue;
+        if(!hashMap.isEmpty()){
+            for(int i = 1; i < hashMap.size() + 1; i++) {
+                if ((getHashMap().get(i)) != null){
+                    int ownedCoinValue = (getHashMap().get(i).getValue());
+                    totalWalletBalance += ownedCoinValue;
+                    numberCoins += 1;
+                }
             }
         }
 
+        else{
+            System.out.println("Wallet is Empty");
+        }
+
         System.out.println("Player's Current Total Wallet Balance is: " + "$" + totalWalletBalance + " \n"
-                + "With a total of: " + getNoCoins() + " Coins, in Player's Wallet");
+                + "With a total of: " + numberCoins + " Coins, in Player's Wallet");
         return totalWalletBalance;
     }
 
@@ -73,19 +87,4 @@ public class CoinWallet extends Item{
     }
 
 
-
-
-
-
-
-
-//    @Override
-//    public String execute(Actor actor, GameMap map) {
-//        return this.displayWalletBalance();
-//    }
-//
-//    @Override
-//    public String menuDescription(Actor actor) {
-//        return "b";
-//    }
 }

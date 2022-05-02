@@ -38,6 +38,8 @@ public class Player extends Actor  {
 		// Testing SpeakAction
 //		this.addItemToInventory(new Wrench());
 //		this.addCapability(Status.INVINCIBLE);
+
+
 	}
 
 	@Override
