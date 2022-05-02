@@ -20,6 +20,7 @@ public class Tree extends Ground implements Resettable{
     TreeTypes treeState;
     int tickcount;
     Location location;
+    Boolean resetchecker;
     /**
      * Constructor.
      *
@@ -29,6 +30,7 @@ public class Tree extends Ground implements Resettable{
         treeState=TreeTypes.SPROUT;
         tickcount=0;
         this.registerInstance();
+        resetchecker=false;
     }
 
     /**
@@ -93,6 +95,9 @@ public class Tree extends Ground implements Resettable{
         this.location=location;
         if (treeState==TreeTypes.DEAD){
             return;
+        }
+        if (resetchecker==true){
+            location.setGround(new Dirt());
         }
 
         //create random double for chance
@@ -211,7 +216,7 @@ public class Tree extends Ground implements Resettable{
         if (probability>0.5) { //chance to wither
             treeState = TreeTypes.DEAD;
             super.setDisplayChar('.');
-            this.location.setGround(new Dirt());
+            resetchecker=true;
         }
     }
 

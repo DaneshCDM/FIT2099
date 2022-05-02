@@ -13,7 +13,7 @@ public class ResetAction extends Action {
     /**
      * <p>
      *     Method that is called when the player chooses the resetgame option
-     * </p>
+     * </p>did
      *
      * @param actor The actor performing the action.
      * @param map The map the actor is on.

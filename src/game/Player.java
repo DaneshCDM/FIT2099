@@ -15,7 +15,6 @@ public class Player extends Actor  {
 
 	private final Menu menu = new Menu();
 	public static boolean resetchecker;
-	boolean firstroundchecker=false;
 
 	// Player Starts with a Coin Wallet
 	public static CoinWallet playerCoinWallet = new CoinWallet();
@@ -48,10 +47,7 @@ public class Player extends Actor  {
 		 * @author Seow Zheng Hao
 		 */
 		if (resetchecker){
-			//checker to make sure reset cant be called on round 1 as entities havent received a tick yet
-			if (firstroundchecker){
-				actions.add(new ResetAction());
-			} else{firstroundchecker=true;}
+			actions.add(new ResetAction());
 		}
 
 		// Handle multi-turn Actions
