@@ -11,10 +11,24 @@ public class Utils {
         return (r.nextInt(high - low) + low);
     }
 
-    public static int randomIndex() {
+    public static int randomIndexFull() {
         Random r = new Random();
         int low = 0;
         int high = 3;
+        return (r.nextInt(high - low + 1) + low);
+    }
+
+    public static int randomIndexThree() {
+        Random r = new Random();
+        int low = 0;
+        int high = 2;
+        return (r.nextInt(high - low + 1) + low);
+    }
+
+    public static int randomIndexTwo() {
+        Random r = new Random();
+        int low = 0;
+        int high = 1;
         return (r.nextInt(high - low + 1) + low);
     }
 
