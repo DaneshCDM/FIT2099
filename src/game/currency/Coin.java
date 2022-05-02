@@ -27,6 +27,7 @@ public class Coin extends Item implements Resettable {
     private static final boolean PORTABLE = true;
     private int value;
     Location location;
+    Boolean resetchecker;
 
     /**
      * Coin Constructor
@@ -37,6 +38,7 @@ public class Coin extends Item implements Resettable {
         super(NAME, DISPLAY_CHARACTER, PORTABLE);
         this.value = value;
         this.registerInstance();
+        resetchecker=false;
 
         Action coinPickUpItemAction = new CoinPickUpItemAction(this);
         addAction(coinPickUpItemAction);
@@ -55,6 +57,9 @@ public class Coin extends Item implements Resettable {
     @Override
     public void tick(Location currentLocation) {
         this.location = currentLocation;
+        if (resetchecker){
+            this.location.removeItem(this);
+        }
     }
 
     // Returns "Coin ($value)
@@ -74,7 +79,7 @@ public class Coin extends Item implements Resettable {
      */
     @Override
     public void resetInstance() {
-        this.location.removeItem(this);
+        resetchecker=true;
     }
 
     @Override
