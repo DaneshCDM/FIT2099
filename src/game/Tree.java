@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.currency.Coin;
 import game.enemies.Goomba;
 import game.enemies.Koopa;
+import game.magicalitems.FireFlower;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -109,10 +110,18 @@ public class Tree extends Ground implements Resettable{
 
         if (tickcount<=10){ //sprout
             sprout(probability,location);
+
+            if (tickcount==1 || tickcount==10){ //growing stage (sprout)(sprout->sapling)
+                fireflower(probability,location);
+            }
         } else if (tickcount<=20){ //sapling
             sapling(probability,location);
             treeState=TreeTypes.SAPLING;
             super.setDisplayChar('t');
+
+            if (tickcount==20){ //growing stage (sapling->mature)
+                fireflower(probability,location);
+            }
         } else { //mature
             mature(probability,location);
             treeState=TreeTypes.MATURE;
@@ -176,6 +185,12 @@ public class Tree extends Ground implements Resettable{
                 location.setGround(new Dirt());
                 //System.out.println("dead: "+location.x()+" "+location.y());
             }
+        }
+    }
+
+    public void fireflower(Double probability, Location location){
+        if (probability<=0.5){
+            location.addItem(new FireFlower("Fire Flower",'f',false));
         }
     }
 
