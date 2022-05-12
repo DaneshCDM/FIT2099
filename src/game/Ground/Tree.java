@@ -1,9 +1,10 @@
-package game;
+package game.Ground;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Resettable;
 import game.currency.Coin;
 import game.enemies.Goomba;
 import game.enemies.Koopa;
@@ -17,7 +18,7 @@ import java.util.Random;
  *
  * @author Seow Zheng Hao
  */
-public class Tree extends Ground implements Resettable{
+public class Tree extends Ground implements Resettable {
     TreeTypes treeState;
     int tickcount;
     Location location;

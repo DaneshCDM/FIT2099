@@ -7,6 +7,8 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.currency.CoinWallet;
+import game.magicalitems.ConsumeFireFlower;
+import game.magicalitems.FireFlower;
 
 /**
  * Class representing the Player.
@@ -19,7 +21,9 @@ public class Player extends Actor  {
 	// Player Starts with a Coin Wallet
 	public static CoinWallet playerCoinWallet = new CoinWallet();
 
-
+	// Fireflower
+	public static Boolean pickedup=false;
+	public static int counter;
 
 	/**
 	 * Constructor.
@@ -50,6 +54,23 @@ public class Player extends Actor  {
 		 */
 		if (resetchecker){
 			actions.add(new ResetAction());
+		}
+		System.out.println(map.locationOf(this).getItems());
+//		//fireflower action option
+//		if (map.locationOf(this).getItems().contains("Fire Flower")){
+//			actions.add(new ConsumeFireFlower());
+//			System.out.println("contains triggered");
+//		}
+
+		//fireflower current duration
+		if (this.hasCapability(Status.FIRE)){
+			System.out.println(counter);
+			System.out.println("triggered!");
+			if (counter>0){
+				counter-=1;
+			} else {
+				this.removeCapability(Status.FIRE);
+			}
 		}
 
 		// Handle multi-turn Actions

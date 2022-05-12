@@ -1,4 +1,4 @@
-package game;
+package game.Ground;
 
 public enum TreeTypes {
     SPROUT,

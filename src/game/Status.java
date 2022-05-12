@@ -11,4 +11,5 @@ public enum Status {
     DORMANT, // use this status to see if Koopa is Dormant
     INVINCIBLE, // use this status to see if a player has consumed PowerStar and is under its effect
     FADINGDURATION, // use this status to see the fading status of powerstar
+    FIRE, //actor has active fire flower ability
 }

@@ -7,7 +7,10 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.Ground.Fire;
+import game.Ground.Pipe;
 
 /**
  * Special Action for attacking other Actors.
@@ -42,6 +45,12 @@ public class AttackAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 
+		Location targetlocation=map.locationOf(this.target);
+		if (targetlocation.getGround().getDisplayChar()!='C') //check for pipe
+			if (actor.hasCapability(Status.FIRE)) { //check for fire status
+				targetlocation.setGround(new Fire()); //sets ground to fire
+			}
+
 		Weapon weapon = actor.getWeapon();
 
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
@@ -68,6 +77,9 @@ public class AttackAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
+		if (actor.hasCapability(Status.FIRE)){
+			return actor + " attacks " + target + " at " + direction+" with fire";
+		}
 		return actor + " attacks " + target + " at " + direction;
 	}
 }
