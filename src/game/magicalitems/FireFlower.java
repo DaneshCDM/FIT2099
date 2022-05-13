@@ -18,6 +18,7 @@ public class FireFlower extends Item{
      */
     public FireFlower(String name, char displayChar, boolean portable) {
         super(name, displayChar, portable);
+        System.out.println(Player.optionshown);
         Action fireFlowerAction = new ConsumeFireFlower(this);
         addAction(fireFlowerAction);
     }

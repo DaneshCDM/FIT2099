@@ -19,7 +19,6 @@ public class Goomba extends Enemies implements Resettable {
 	 * Constructor.
 	 */
 	public Goomba() {
-
 		super("Goomba", 'g', 20);
 		this.registerInstance();
 	}
@@ -35,6 +34,9 @@ public class Goomba extends Enemies implements Resettable {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+		//check for fire on the ground
+		FloorOnFire(this,map);
+
 		int random_Value = Utils.randomVal();
 		if ((float)random_Value < (float)(10/100)) {
 			this.hurt(21);

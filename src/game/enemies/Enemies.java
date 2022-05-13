@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import game.*;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
@@ -16,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Enemies extends Actor {
-
+    Location location;
     private final Map<Integer, Behaviour> behaviours = new HashMap<>();
     /**
      * Constructor.
@@ -55,5 +56,12 @@ public abstract class Enemies extends Actor {
     }
     public Map<Integer, Behaviour> getBehaviours() {
         return behaviours;
+    }
+
+    public void FloorOnFire(Actor actor, GameMap map){
+        if (map.locationOf(actor).getGround().getDisplayChar()=='v'){
+            actor.hurt(20);
+            System.out.println("standing on fire");
+        }
     }
 }

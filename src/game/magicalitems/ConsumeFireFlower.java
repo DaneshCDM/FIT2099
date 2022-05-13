@@ -15,7 +15,7 @@ public class ConsumeFireFlower extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         Player.pickedup=true;
-        Player.counter=3;
+        Player.counter=20;
         actor.addCapability(Status.FIRE);
         map.locationOf(actor).removeItem(fireflower);
         return "Your "+actor+" consumed a Fire Flower! Somewhat more attack power now.";
@@ -23,6 +23,6 @@ public class ConsumeFireFlower extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return "Consume fire flower";
+        return "Consume fire flower [gains fire attack for 20 turns] (attacks so hot the ground literally catches on fire!)";
     }
 }

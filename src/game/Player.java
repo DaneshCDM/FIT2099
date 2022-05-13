@@ -16,6 +16,7 @@ import game.magicalitems.FireFlower;
 public class Player extends Actor  {
 
 	private final Menu menu = new Menu();
+	// Reset checker
 	public static boolean resetchecker;
 
 	// Player Starts with a Coin Wallet
@@ -24,6 +25,7 @@ public class Player extends Actor  {
 	// Fireflower
 	public static Boolean pickedup=false;
 	public static int counter;
+	public static Boolean optionshown;
 
 	/**
 	 * Constructor.
@@ -55,17 +57,12 @@ public class Player extends Actor  {
 		if (resetchecker){
 			actions.add(new ResetAction());
 		}
-		System.out.println(map.locationOf(this).getItems());
-//		//fireflower action option
-//		if (map.locationOf(this).getItems().contains("Fire Flower")){
-//			actions.add(new ConsumeFireFlower());
-//			System.out.println("contains triggered");
-//		}
+//		System.out.println(map.locationOf(this).getItems());
 
 		//fireflower current duration
 		if (this.hasCapability(Status.FIRE)){
-			System.out.println(counter);
-			System.out.println("triggered!");
+			System.out.println("Fire attack turns left: "+counter);
+//			System.out.println("has status fire!");
 			if (counter>0){
 				counter-=1;
 			} else {
