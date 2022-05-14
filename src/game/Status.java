@@ -12,4 +12,6 @@ public enum Status {
     INVINCIBLE, // use this status to see if a player has consumed PowerStar and is under its effect
     FADINGDURATION, // use this status to see the fading status of powerstar
     FIRE, //actor has active fire flower ability
+    LAVA, // actor can enter the lavamap
+
 }
