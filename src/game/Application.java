@@ -8,10 +8,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.Ground.Dirt;
-import game.Ground.Floor;
-import game.Ground.Wall;
-import game.Ground.Tree;
+import game.Ground.*;
 
 /**
  * The main class for the Mario World game.
@@ -23,7 +20,7 @@ public class Application {
 
 			World world = new World(new Display());
 
-			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Tree());
+			FancyGroundFactory groundFactory = new FancyGroundFactory(new Lava(), new Dirt(), new Wall(), new Floor(), new Tree());
 
 			List<String> map = Arrays.asList(
 				"..........................................##..........+.........................",
@@ -49,6 +46,8 @@ public class Application {
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
 
+			Actor mario = new Player("Player", 'm', 100);
+			world.addPlayer(mario, gameMap.at(42, 10));
 //			// FIXME: the Goomba should be generated from the Tree
 //			gameMap.at(35, 10).addActor(new Goomba());
 
@@ -57,26 +56,45 @@ public class Application {
 			gameMap.at(42, 11).addActor(new Toad());
 
 			List<String> lavaZone = Arrays.asList(
-				"..........................................##..........+.........................",
-				"............+............+..................#...................................",
-				"............................................#...................................",
-				".............................................##......................+..........",
-				"...............................................#................................",
-				"................................................#...............................",
-				".................+................................#.............................",
-				".................................................##.............................",
-				"................................................##..............................",
-				".........+..............................+#____####.................+............",
-				".......................................+#_____###++.............................",
-				".......................................+#______###..............................");
+				".............................................",
+				"............+............+...................",
+				".............................................",
+				".............................................",
+				".............................................",
+				".............................................",
+				".................+...........................",
+				".............................................",
+				".............................................",
+				".........+...................................",
+				".............................................",
+				".............................................");
 
 			GameMap newLavaMap = new GameMap(groundFactory, lavaZone);
 			world.addGameMap(newLavaMap);
 
-			Actor mario = new Player("Player", 'm', 100);
-			world.addPlayer(mario, gameMap.at(42, 10));
+			Lava lava = new Lava();
+			newLavaMap.at(2,3).setGround(lava);
+			newLavaMap.at(8,6).setGround(lava);
+			newLavaMap.at(9,10).setGround(lava);
+			newLavaMap.at(22,9).setGround(lava);
+			newLavaMap.at(42,5).setGround(lava);
+			newLavaMap.at(32,6).setGround(lava);
+			newLavaMap.at(12,2).setGround(lava);
+			newLavaMap.at(20,1).setGround(lava);
+			newLavaMap.at(15,8).setGround(lava);
+			newLavaMap.at(18,7).setGround(lava);
+			newLavaMap.at(10,10).setGround(lava);
+			newLavaMap.at(16,11).setGround(lava);
+
+			WarpPipe warpPipe = new WarpPipe("lavaZone");
+			newLavaMap.at(0,0).setGround(warpPipe);
+			gameMap.at(15,18).setGround(new WarpPipe(warpPipe));
+			gameMap.at(20,5).setGround(new WarpPipe(warpPipe));
+			gameMap.at(5,8).setGround(new WarpPipe(warpPipe));
+			gameMap.at(18,13).setGround(new WarpPipe(warpPipe));
+			gameMap.at(10,10).setGround(new WarpPipe(warpPipe));
+			gameMap.at(19,10).setGround(new WarpPipe(warpPipe));
 
 			world.run();
-
 	}
 }

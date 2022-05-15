@@ -11,7 +11,7 @@ public class Lava extends Ground {
      *
      * @param displayChar character to display for this type of terrain
      */
-    public Lava(char displayChar) {
+    public Lava() {
         super('L');
     }
 
@@ -20,7 +20,7 @@ public class Lava extends Ground {
         if (location.containsAnActor()) {
             location.getActor().hurt(15);
         }
-        tick(location);
+        super.tick(location);
         }
 
         @Override
