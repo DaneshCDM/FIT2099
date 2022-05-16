@@ -9,6 +9,10 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.Ground.*;
+import game.fountains.HealthFountain;
+import game.fountains.PowerFountain;
+import game.magicalitems.Bottle;
+import game.magicalitems.DrinkWater;
 
 /**
  * The main class for the Mario World game.
@@ -46,7 +50,7 @@ public class Application {
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
 
-			Actor mario = new Player("Player", 'm', 100);
+			Player mario = new Player("Mario", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 10));
 //			// FIXME: the Goomba should be generated from the Tree
 //			gameMap.at(35, 10).addActor(new Goomba());
@@ -94,6 +98,14 @@ public class Application {
 			gameMap.at(18,13).setGround(new WarpPipe(warpPipe));
 			gameMap.at(10,10).setGround(new WarpPipe(warpPipe));
 			gameMap.at(19,10).setGround(new WarpPipe(warpPipe));
+
+			Bottle bottle = new Bottle(mario);
+			mario.addItemToInventory(bottle);
+			HealthFountain healthFountain = new HealthFountain();
+			gameMap.at(16, 5).setGround(healthFountain);
+			PowerFountain powerFountain = new PowerFountain();
+			gameMap.at(20, 13).setGround(powerFountain);
+
 
 			world.run();
 	}

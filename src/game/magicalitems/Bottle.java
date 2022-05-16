@@ -8,15 +8,15 @@ import java.util.List;
 import java.util.Stack;
 
 public class Bottle extends Item {
-    DrinkWater drinkWater;
+    public static DrinkWater drinkWater;
     Stack<Water> drinkingWater = new Stack<Water>();
 
     public static Bottle bottle; // instance of Bottle to update the status of refillingBottle
 
-    public Bottle(DrinkWater drinkingWater) {
+    public Bottle(DrinkWater drinkWater) {
         super("Bottle", 'b', false);
         bottle = this;
-        drinkWater = drinkingWater;
+        Bottle.drinkWater = drinkWater;
     }
 
     public boolean isdrinkingWaterEmpty() {
@@ -26,7 +26,7 @@ public class Bottle extends Item {
     public String actorUsesItem() {
         String output = "";
         if (isdrinkingWaterEmpty() == false){
-//            output = drinkingWater.pop();
+            output = drinkingWater.pop().typeOfWater;
             bottle = this;
         }
         else {

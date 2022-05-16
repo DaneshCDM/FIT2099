@@ -8,12 +8,13 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.currency.CoinWallet;
 import game.magicalitems.ConsumeFireFlower;
+import game.magicalitems.DrinkWater;
 import game.magicalitems.FireFlower;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Actor  {
+public class Player extends Actor implements DrinkWater {
 
 	private final Menu menu = new Menu();
 	// Reset checker
@@ -89,5 +90,15 @@ public class Player extends Actor  {
 
 	public void setPlayerCoinWallet(CoinWallet playerCoinWallet) {
 		this.playerCoinWallet = playerCoinWallet;
+	}
+
+	@Override
+	public void healing(int healingHitPoints) {
+
+	}
+
+	@Override
+	public void increaseIntrinsicAttackDamage(int points) {
+
 	}
 }

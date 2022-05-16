@@ -19,6 +19,7 @@ public abstract class Fountain extends Ground {
 
     public Fountain(char displayChar) {
         super(displayChar);
+        fountain = this;
     }
 
     public ActionList allowableActions(Actor actor, Location location, String direction) {
@@ -28,4 +29,8 @@ public abstract class Fountain extends Ground {
         }
         return newActions;
     }
+
+    public abstract String fountainsEffect(DrinkWater drinkWater);
+
+    public abstract String typeOfWater();
 }
