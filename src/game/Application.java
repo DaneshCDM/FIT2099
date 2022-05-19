@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.Ground.*;
+import game.enemies.Bowser;
 import game.fountains.HealthFountain;
 import game.fountains.PowerFountain;
 import game.magicalitems.Bottle;
@@ -98,6 +99,9 @@ public class Application {
 			gameMap.at(18,13).setGround(new WarpPipe(warpPipe));
 			gameMap.at(10,10).setGround(new WarpPipe(warpPipe));
 			gameMap.at(19,10).setGround(new WarpPipe(warpPipe));
+
+			newLavaMap.at(15, 8).addActor(new Bowser(newLavaMap.at(15, 8)));
+
 
 			Bottle bottle = new Bottle(mario);
 			mario.addItemToInventory(bottle);

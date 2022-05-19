@@ -13,5 +13,8 @@ public enum Status {
     FADINGDURATION, // use this status to see the fading status of powerstar
     FIRE, //actor has active fire flower ability
     LAVA, // actor can enter the lavamap
-
+    FLYINGKOOPA, // actors that can fly
+    HASWRENCH,// actor has wrench
+    NONMOVEABLE,
+    BOWSER,
 }

@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Resettable;
+import game.enemies.PiranhaPlant;
 
 public class WarpPipe extends Ground implements Resettable {
 
@@ -12,6 +13,7 @@ public class WarpPipe extends Ground implements Resettable {
     Location location;
     WarpPipe destination;
     WarpPipe departure = this;
+    PiranhaPlant piranhaPlant;
 
     public WarpPipe(String map) {
         super('C');
@@ -29,7 +31,7 @@ public class WarpPipe extends Ground implements Resettable {
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = super.allowableActions(actor, location, direction);
         if (location.containsAnActor() == true) {
-            actions.add(new Teleportation(destination, departure));
+                actions.add(new Teleportation(destination, departure));
         }
         return actions;
     }
@@ -37,7 +39,13 @@ public class WarpPipe extends Ground implements Resettable {
     @Override
     public void tick(Location location) {
         this.location = location;
-        super.tick(location);
+        if (piranhaPlant == null){
+            if (location.containsAnActor() == false){
+                piranhaPlant = new PiranhaPlant();
+                location.addActor(piranhaPlant);
+            }
+        }
+        super.tick(this.location);
     }
 
     public String getMap() {

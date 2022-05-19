@@ -35,9 +35,11 @@ public abstract class Enemies extends Actor {
         ActionList actions = new ActionList();
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-            addCapability(Status.FOLLOWBEHAVIOUR);
-            behaviours.put(2, new FollowBehaviour(otherActor));
-            actions.add(new AttackAction(this,direction));
+            this.addCapability(Status.FOLLOWBEHAVIOUR);
+            if (this.hasCapability(Status.NONMOVEABLE) == false) {
+                behaviours.put(2, new FollowBehaviour(otherActor));
+            }
+            actions.add(new AttackAction(this, direction));
         }
         return actions;
     }
