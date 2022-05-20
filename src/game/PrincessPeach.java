@@ -2,9 +2,16 @@ package game;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static game.Monologue.getPrincessPeachSentences;
 
 public class PrincessPeach extends Actor {
 
@@ -15,6 +22,9 @@ public class PrincessPeach extends Actor {
     private static final Character DISPLAY_CHARACTER = 'P';
     private static final int HIT_POINTS = 1;
 
+    private int turnCounter = 0;
+    List<String> princessPeachMonologue = new ArrayList<>(List.of(getPrincessPeachSentences()));
+
     /**
      * Constructor for Princess Peach
      */
@@ -24,7 +34,18 @@ public class PrincessPeach extends Actor {
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        return null;
+
+        // FOR SPEAKING - REQ5:
+        // Increment Turn Counter
+        turnCounter += 1;
+
+        // Princess Peach speaks every Second (Alternating) turn
+        if(turnCounter % 2 == 0){
+            System.out.println(NAME + ": " + princessPeachMonologue.get(Utils.randomIndexThree()));
+        }
+
+        return new DoNothingAction();
     }
+
 
 }

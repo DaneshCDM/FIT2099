@@ -72,6 +72,22 @@ public class Monologue {
         return MONOLOGUE_SENTENCES;
     }
 
+    /**
+     * String List to store all of Princess Peach's Sentences
+     */
+    private static final String[] PRINCESS_PEACH_SENTENCES = {
+            PP1,
+            PP2,
+            PP3
+    };
+
+    /**
+     * Getter for String List of all of Princess Peach's Sentences
+     * @return String List
+     */
+    public static String[] getPrincessPeachSentences() {
+        return PRINCESS_PEACH_SENTENCES;
+    }
 
 
 
