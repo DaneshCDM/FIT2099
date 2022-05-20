@@ -46,7 +46,6 @@ public abstract class Actor implements Capable, Printable {
 	 */
 	private final CapabilitySet capabilitySet = new CapabilitySet();
 
-
 	/**
 	 * Constructor.
 	 * @param name the name of the Actor
