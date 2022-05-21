@@ -9,10 +9,10 @@ public class Monologue {
     /**
      * Sentences that the Toad can choose to say, as Static Strings
      */
-    public static final String S1 = "You might need a wrench to smash Koopa's hard shells";
-    public static final String S2 = "You better get back to finding the Power Stars";
-    public static final String S3 = "The Princess is depending on you! You are our only hope";
-    public static final String S4 = "Being imprisoned in these walls can drive a fungus crazy :(";
+    public static final String T1 = "You might need a wrench to smash Koopa's hard shells";
+    public static final String T2 = "You better get back to finding the Power Stars";
+    public static final String T3 = "The Princess is depending on you! You are our only hope";
+    public static final String T4 = "Being imprisoned in these walls can drive a fungus crazy :(";
 
     /**
      * Sentence that Princess Peach can choose to say
@@ -59,19 +59,19 @@ public class Monologue {
     /**
      * String List to store all of Toad's Sentences
      */
-    private static final String[] MONOLOGUE_SENTENCES = {
-            S1,
-            S2,
-            S3,
-            S4
+    private static final String[] TOAD_SENTENCES = {
+            T1,
+            T2,
+            T3,
+            T4
     };
 
     /**
      * Getter for String List of all of Toad's Sentences
      * @return String List
      */
-    public static String[] getMonologueSentences() {
-        return MONOLOGUE_SENTENCES;
+    public static String[] getToadSentences() {
+        return TOAD_SENTENCES;
     }
 
     /**
@@ -174,7 +174,6 @@ public class Monologue {
     public static String[] getPiranhaPlantsSentences() {
         return PIRANHA_PLANTS_SENTENCES;
     }
-
 
 
 }

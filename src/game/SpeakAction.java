@@ -28,12 +28,12 @@ public class SpeakAction extends Action {
         int randomIndex = Utils.randomIndexFull();
         boolean flagOneRemoved = true;
 
-        List<String> monologueSentences = new ArrayList<>(List.of(getMonologueSentences()));
+        List<String> toadMonologue = new ArrayList<>(List.of(getToadSentences()));
 
         // Remove 1st Sentence if Player has Wrench
         for(int i = 0; i < actor.getInventory().size(); i ++){
             if (actor.getInventory().get(i).toString().equals("Wrench")){
-                monologueSentences.remove(S1);
+                toadMonologue.remove(T1);
                 randomIndex = Utils.randomIndexThree();
                 flagOneRemoved = false;
             }
@@ -41,15 +41,15 @@ public class SpeakAction extends Action {
 
         // Remove 2nd Sentence if Player has Power Star Effect
         if (actor.hasCapability(Status.INVINCIBLE) && !flagOneRemoved){
-            monologueSentences.remove(S2);
+            toadMonologue.remove(T2);
             randomIndex = Utils.randomIndexTwo();
         }
         else if(actor.hasCapability(Status.INVINCIBLE)){
-            monologueSentences.remove(S2);
+            toadMonologue.remove(T2);
             randomIndex = Utils.randomIndexThree();
         }
 
-        return (target) + ": " + monologueSentences.get(randomIndex);
+        return (target) + ": " + toadMonologue.get(randomIndex);
     }
 
     @Override

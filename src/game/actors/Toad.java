@@ -9,17 +9,26 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.SpeakAction;
 import game.TradeAction;
+import game.Utils;
 import game.Wrench;
 import game.magicalitems.PowerStar;
 import game.magicalitems.SuperMushroom;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import static game.Monologue.getPrincessPeachSentences;
+import static game.Monologue.getToadSentences;
 
 /**
  *  Toad class manages everything to do with Toad and the Shop Items/Trading
  *  @author Danesh Mariapan
  */
 public class Toad extends Actor {
+
+    private int turnCounter = 0;
+    List<String> toadMonologue = new ArrayList<>(List.of(getToadSentences()));
 
     /**
      * Toad Attributes
@@ -53,6 +62,16 @@ public class Toad extends Actor {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+
+        // FOR SPEAKING - REQ5:
+        // Increment Turn Counter
+        turnCounter += 1;
+
+        // Toad speaks every Second (Alternating) turn
+        if(turnCounter % 2 == 0){
+            System.out.println(NAME + ": " + toadMonologue.get(Utils.randomIndexFull()));
+        }
+
         return new DoNothingAction();
     }
 
