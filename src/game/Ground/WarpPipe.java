@@ -86,7 +86,13 @@ public class WarpPipe extends Ground implements Resettable {
     }
 
     @Override
-    public void resetInstance() {}
+    public void resetInstance() {
+        if (piranhaPlant.isConscious()){
+            piranhaPlant.increaseMaxHp(50);
+        } else{
+            piranhaPlant=null;
+        }
+    }
 
     @Override
     public void registerInstance() {

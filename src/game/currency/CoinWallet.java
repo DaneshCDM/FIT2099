@@ -1,11 +1,7 @@
 package game.currency;
 import java.util.HashMap;
 
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.positions.GameMap;
-import game.Player;
 
 /**
  *  Coin Wallet manages everything to do with a Coin values and Player Balance

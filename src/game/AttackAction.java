@@ -47,9 +47,9 @@ public class AttackAction extends Action {
 
 		Location targetlocation=map.locationOf(this.target);
 		if (targetlocation.getGround().getDisplayChar()!='C') //check for pipe
-			System.out.println("not pipe");
+//			System.out.println("not pipe");
 			if (actor.hasCapability(Status.FIRE)) { //check for fire status
-				System.out.println("has status fire");
+//				System.out.println("has status fire");
 				targetlocation.setGround(new Fire()); //sets ground to fire
 			}
 

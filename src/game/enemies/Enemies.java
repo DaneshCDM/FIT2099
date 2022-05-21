@@ -12,6 +12,7 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
+import game.magicalitems.Key;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +30,9 @@ public abstract class Enemies extends Actor {
     public Enemies(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.behaviours.put(1, new AttackBehaviour());
-        this.behaviours.put(10, new WanderBehaviour());
+        if (displayChar!='B' && displayChar!='Y') {
+            this.behaviours.put(10, new WanderBehaviour());
+        }
     }
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
@@ -44,7 +47,13 @@ public abstract class Enemies extends Actor {
         return actions;
     }
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        FloorOnFire(this, map);
+
         if (isConscious() == false) {
+            //drop key upon death for bowser
+            if (this.getDisplayChar()=='B'){
+                map.locationOf(this).addItem(new Key("Key",'K',true));
+            }
             map.removeActor(this);
         }
         else {
@@ -63,7 +72,7 @@ public abstract class Enemies extends Actor {
     public void FloorOnFire(Actor actor, GameMap map){
         if (map.locationOf(actor).getGround().getDisplayChar()=='v'){
             actor.hurt(20);
-            System.out.println("standing on fire");
+            System.out.println(actor.toString()+ " is standing on fire!");
         }
     }
 }

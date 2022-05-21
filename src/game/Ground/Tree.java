@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Resettable;
 import game.currency.Coin;
+import game.enemies.FlyingKoopa;
 import game.enemies.Goomba;
 import game.enemies.Koopa;
 import game.magicalitems.FireFlower;
@@ -45,7 +46,11 @@ public class Tree extends Ground implements Resettable {
      */
     @Override
     public boolean canActorEnter(Actor actor) {
-        return false;
+        if (actor.getDisplayChar()=='F'){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -173,7 +178,13 @@ public class Tree extends Ground implements Resettable {
         if (this.tickcount>=20){ //mature stage
             treeState=TreeTypes.MATURE;
             if (probability<=0.15 & !location.containsAnActor()){ //15% chance to spawn koopa
-                location.addActor(new Koopa());
+                Random random=new Random();
+                double probability2=random.nextDouble();
+                if (probability2<=0.5){
+                    location.addActor(new Koopa());
+                } else{
+                    location.addActor(new FlyingKoopa());
+                }
             }
 
             if (this.tickcount%5==0){ //turn tiles around it

@@ -1,4 +1,4 @@
-package game;
+package game.actors;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.ResetAction;
+import game.Status;
 import game.currency.CoinWallet;
 import game.magicalitems.ConsumeFireFlower;
 import game.magicalitems.DrinkWater;
@@ -60,6 +62,9 @@ public class Player extends Actor implements DrinkWater {
 		}
 //		System.out.println(map.locationOf(this).getItems());
 
+		//check if floor on fire
+		FloorOnFire(this,map);
+
 		//fireflower current duration
 		if (this.hasCapability(Status.FIRE)){
 			System.out.println("Fire attack turns left: "+counter);
@@ -100,5 +105,12 @@ public class Player extends Actor implements DrinkWater {
 	@Override
 	public void increaseIntrinsicAttackDamage(int points) {
 
+	}
+
+	public void FloorOnFire(Actor actor, GameMap map){
+		if (map.locationOf(actor).getGround().getDisplayChar()=='v'){
+			actor.hurt(20);
+			System.out.println("standing on fire");
+		}
 	}
 }

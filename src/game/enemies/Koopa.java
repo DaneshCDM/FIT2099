@@ -44,8 +44,6 @@ public class Koopa extends Enemies implements Resettable {
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        //check for fire on the ground
-        FloorOnFire(this,map);
 
         if (isConscious() == false) {
             if (hasCapability(Status.DORMANT) == false){
