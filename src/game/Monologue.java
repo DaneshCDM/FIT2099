@@ -142,6 +142,22 @@ public class Monologue {
         return KOOPA_SENTENCES;
     }
 
+    /**
+     * String List to store all of Flying Koopa's Sentences
+     */
+    private static final String[] FLYING_KOOPA_SENTENCES = {
+            FK1,
+            FK2,
+            FK3
+    };
+
+    /**
+     * Getter for String List of all of Flying Koopa's Sentences
+     * @return String List
+     */
+    public static String[] getFlyingKoopaSentences() {
+        return FLYING_KOOPA_SENTENCES;
+    }
 
 
 

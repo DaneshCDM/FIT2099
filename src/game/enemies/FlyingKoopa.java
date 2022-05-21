@@ -6,9 +6,18 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
+import game.Utils;
 import game.magicalitems.SuperMushroom;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static game.Monologue.getFlyingKoopaSentences;
+
 public class FlyingKoopa extends Enemies{
+
+    private int turnCounter = 0;
+    List<String> flyingKoopaMonologue = new ArrayList<>(List.of(getFlyingKoopaSentences()));
 
     public FlyingKoopa() {
         super("Flying Koopa", 'F', 150);
@@ -23,6 +32,16 @@ public class FlyingKoopa extends Enemies{
                 setDisplayChar('D');
             }
         }
+
+        // FOR SPEAKING - REQ5:
+        // Increment Turn Counter
+        turnCounter += 1;
+
+        // Flying Koopa speaks every Second (Alternating) turn
+        if(turnCounter % 2 == 0){
+            System.out.println("Flying Koopa" + ": " + flyingKoopaMonologue.get(Utils.randomIndexThree()));
+        }
+
         return super.playTurn(actions, lastAction, map, display);
     }
 
