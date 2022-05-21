@@ -159,8 +159,21 @@ public class Monologue {
         return FLYING_KOOPA_SENTENCES;
     }
 
+    /**
+     * String List to store all of Piranha Plant's Sentences
+     */
+    private static final String[] PIRANHA_PLANTS_SENTENCES = {
+            P1,
+            P2
+    };
 
-
+    /**
+     * Getter for String List of all of Piranha Plant's Sentences
+     * @return String List
+     */
+    public static String[] getPiranhaPlantsSentences() {
+        return PIRANHA_PLANTS_SENTENCES;
+    }
 
 
 
