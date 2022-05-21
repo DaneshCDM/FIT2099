@@ -89,7 +89,23 @@ public class Monologue {
         return PRINCESS_PEACH_SENTENCES;
     }
 
+    /**
+     * String List to store all of Bowser's Sentences
+     */
+    private static final String[] BOWSER_SENTENCES = {
+            B1,
+            B2,
+            B3,
+            B4
+    };
 
+    /**
+     * Getter for String List of all of Bowser's Sentences
+     * @return String List
+     */
+    public static String[] getBowserSentences() {
+        return BOWSER_SENTENCES;
+    }
 
 
 
