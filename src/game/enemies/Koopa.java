@@ -8,9 +8,21 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Resettable;
 import game.Status;
+import game.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static game.Monologue.getKoopaSentences;
+import static game.Monologue.getPrincessPeachSentences;
 
 public class Koopa extends Enemies implements Resettable {
+
     IntrinsicWeapon intrinsicWeapon;
+
+    private int turnCounter = 0;
+    List<String> koopaMonologue = new ArrayList<>(List.of(getKoopaSentences()));
+
     /**
      * Constructor.
      *
@@ -51,6 +63,16 @@ public class Koopa extends Enemies implements Resettable {
                 setDisplayChar('D');
             }
         }
+
+        // FOR SPEAKING - REQ5:
+        // Increment Turn Counter
+        turnCounter += 1;
+
+        // Koopa speaks every Second (Alternating) turn
+        if(turnCounter % 2 == 0){
+            System.out.println("Koopa" + ": " + koopaMonologue.get(Utils.randomIndexTwo()));
+        }
+
         return super.playTurn(actions, lastAction, map, display);
     }
 

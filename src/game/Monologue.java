@@ -45,7 +45,9 @@ public class Monologue {
     /**
      * Sentences that Flying Koopas can choose to say
      */
-    public static final String FK1 = "Pam pam pam!";
+    public static final String FK1 = "Never gonna make you cry!";
+    public static final String FK2 = "Koopi koopi koopii~!";
+    public static final String FK3 = "Pam pam pam!";
 
     /**
      * Sentences that Piranha Plants can choose to say
@@ -123,5 +125,27 @@ public class Monologue {
     public static String[] getGoombaSentences() {
         return GOOMBA_SENTENCES;
     }
+
+    /**
+     * String List to store all of Koopa's Sentences
+     */
+    private static final String[] KOOPA_SENTENCES = {
+            K1,
+            K2
+    };
+
+    /**
+     * Getter for String List of all of Koopa's Sentences
+     * @return String List
+     */
+    public static String[] getKoopaSentences() {
+        return KOOPA_SENTENCES;
+    }
+
+
+
+
+
+
 
 }
