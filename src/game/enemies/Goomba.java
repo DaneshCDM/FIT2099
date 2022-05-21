@@ -10,11 +10,22 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Resettable;
 import game.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static game.Monologue.getGoombaSentences;
+import static game.Monologue.getPrincessPeachSentences;
+
 /**
  * A little fungus guy.
  */
 public class Goomba extends Enemies implements Resettable {
+
 	IntrinsicWeapon intrinsicWeapon;
+
+	private int turnCounter = 0;
+	List<String> goombaMonologue = new ArrayList<>(List.of(getGoombaSentences()));
+
 	/**
 	 * Constructor.
 	 */
@@ -39,6 +50,16 @@ public class Goomba extends Enemies implements Resettable {
 		if ((float)random_Value < (float)(10/100)) {
 			this.hurt(21);
 		}
+
+		// FOR SPEAKING - REQ5:
+		// Increment Turn Counter
+		turnCounter += 1;
+
+		// Goomba speaks every Second (Alternating) turn
+		if(turnCounter % 2 == 0){
+			System.out.println("Goomba" + ": " + goombaMonologue.get(Utils.randomIndexThree()));
+		}
+
 		return super.playTurn(actions,lastAction, map, display);
 	}
 

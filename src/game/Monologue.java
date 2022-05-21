@@ -1,7 +1,7 @@
 package game;
 
 /**
- *  Monologue holds all of Toad's Sentences
+ *  Monologue holds all of the Allies' & Enemies' Sentences
  *  @author Danesh Mariapan
  */
 public class Monologue {
@@ -107,6 +107,21 @@ public class Monologue {
         return BOWSER_SENTENCES;
     }
 
+    /**
+     * String List to store all of Goomba's Sentences
+     */
+    private static final String[] GOOMBA_SENTENCES = {
+            G1,
+            G2,
+            G3
+    };
 
+    /**
+     * Getter for String List of all of Goomba's Sentences
+     * @return String List
+     */
+    public static String[] getGoombaSentences() {
+        return GOOMBA_SENTENCES;
+    }
 
 }
