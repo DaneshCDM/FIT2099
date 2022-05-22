@@ -76,12 +76,24 @@ public class Bowser extends Enemies implements Resettable {
         return "Bowser";
     }
 
+    /**
+     * <p>
+     *     Method called when the player chooses the resetgame action
+     * </p>
+     *
+     */
     @Override
     public void resetInstance() {
-        storeLocation.map().removeActor(this);
-        storeLocation.map().at(15, 8).addActor(new Bowser(storeLocation.map().at(15, 8)));
+        Location originallocation=storeLocation.map().at(15,8);
+        storeLocation.map().moveActor(this,originallocation);
+        this.heal(99999);
     }
 
+    /**
+     * <p>
+     *     Method called in the constructor to add this class as a resettable class
+     * </p>
+     */
     @Override
     public void registerInstance() {
         Resettable.super.registerInstance();

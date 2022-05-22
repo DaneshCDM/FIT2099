@@ -26,3 +26,4 @@ public class ConsumeFireFlower extends Action {
         return "Consume fire flower [gains fire attack for 20 turns] (attacks so hot the ground literally catches on fire!)";
     }
 }
+

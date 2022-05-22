@@ -85,15 +85,28 @@ public class WarpPipe extends Ground implements Resettable {
         return "WarpPipe is on " + map;
     }
 
+    /**
+     * <p>
+     *     Method called when the player chooses the resetgame action
+     * </p>
+     *
+     */
     @Override
     public void resetInstance() {
-        if (piranhaPlant.isConscious()){
-            piranhaPlant.increaseMaxHp(50);
-        } else{
-            piranhaPlant=null;
+        if (this.piranhaPlant!=null) {
+            if (this.piranhaPlant.isConscious()) {
+                this.piranhaPlant.increaseMaxHp(50);
+            } else {
+                this.piranhaPlant = null;
+            }
         }
     }
 
+    /**
+     * <p>
+     *     Method called in the constructor to add this class as a resettable class
+     * </p>
+     */
     @Override
     public void registerInstance() {
         Resettable.super.registerInstance();
