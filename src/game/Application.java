@@ -104,7 +104,7 @@ public class Application {
 			// Add Bowser to Lava Map
 			newLavaMap.at(15, 8).addActor(new Bowser(newLavaMap.at(15, 8)));
 			// Add Princess Peach to Lava Map
-			newLavaMap.at(18, 10).addActor(new PrincessPeach());
+			newLavaMap.at(16, 8).addActor(new PrincessPeach());
 
 
 			Bottle bottle = new Bottle(mario);
