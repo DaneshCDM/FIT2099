@@ -102,7 +102,7 @@ public class Application {
 			gameMap.at(19,10).setGround(new WarpPipe(warpPipe));
 
 			// Add Bowser to Lava Map
-			newLavaMap.at(15, 8).addActor(new Bowser(newLavaMap.at(15, 8)));
+			newLavaMap.at(17, 8).addActor(new Bowser(newLavaMap.at(15, 8)));
 			// Add Princess Peach to Lava Map
 			newLavaMap.at(16, 8).addActor(new PrincessPeach());
 
