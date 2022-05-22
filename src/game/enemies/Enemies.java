@@ -52,9 +52,10 @@ public abstract class Enemies extends Actor {
 
         if (isConscious() == false) {
             //drop key upon death for bowser
-            if (this.getDisplayChar()=='B'){
-                map.locationOf(this).addItem(new Key());
-            }
+//            if (this.getDisplayChar()=='B'){
+//                map.locationOf(this).addItem(new Key());
+//            }
+
             map.removeActor(this);
         }
         else {
@@ -64,6 +65,7 @@ public abstract class Enemies extends Actor {
                     return action;
             }
         }
+
         return new DoNothingAction();
     }
     public Map<Integer, Behaviour> getBehaviours() {

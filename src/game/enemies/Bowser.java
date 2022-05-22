@@ -9,6 +9,8 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Resettable;
 import game.Status;
 import game.Utils;
+import game.currency.CoinWallet;
+import game.magicalitems.Key;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +25,17 @@ public class Bowser extends Enemies implements Resettable {
     private int turnCounter = 0;
     List<String> bowserMonologue = new ArrayList<>(List.of(getBowserSentences()));
 
-    // Bowser holds the Key to save Princess Peach
-//    public static Key playerCoinWallet = new CoinWallet();
+    // Bowser's Key
+    public static Key bowserKey = new Key();
 
     public Bowser(Location currentLocation) {
         super("Bowser", 'B', 5);
         this.addCapability(Status.FIRE);
         this.storeLocation = currentLocation;
         registerInstance();
+
+        // Bowser hod the Key to save Princess Peach in his Inventory
+        this.addItemToInventory(bowserKey);
     }
 
     public IntrinsicWeapon intrinsicWeapon(){
@@ -46,6 +51,12 @@ public class Bowser extends Enemies implements Resettable {
                 this.removeCapability(Status.BOWSER);
 //                map.moveActor(this, storeLocation);
             }
+        }
+
+        // Drop the Key onto map when Bowser dies
+        if (!this.isConscious()){
+            this.removeItemFromInventory(bowserKey);
+            map.locationOf(this).addItem(bowserKey);
         }
 
         // FOR SPEAKING - REQ5:
