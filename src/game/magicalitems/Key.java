@@ -3,13 +3,19 @@ package game.magicalitems;
 import edu.monash.fit2099.engine.items.Item;
 
 public class Key extends Item {
-    /***
-     * Constructor.
-     *  @param name the name of this Item
-     * @param displayChar the character to use to represent this item if it is on the ground
-     * @param portable true if and only if the Item can be picked up
+
+    /**
+     * Key Item Attributes
      */
-    public Key(String name, char displayChar, boolean portable) {
-        super(name, displayChar, portable);
+    private static final String NAME = "Key";
+    private static final Character DISPLAY_CHARACTER = 'k';
+    private static final boolean PORTABLE = true;
+
+    /***
+     * Key Item Constructor
+     */
+    public Key() {
+        super(NAME, DISPLAY_CHARACTER, PORTABLE);
     }
+
 }

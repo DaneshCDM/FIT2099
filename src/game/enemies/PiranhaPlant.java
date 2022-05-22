@@ -23,7 +23,7 @@ public class PiranhaPlant extends Enemies{
 
 
     public PiranhaPlant() {
-        super("PiranhaPlant", 'Y', 100);
+        super("PiranhaPlant", 'Y', 5);
         this.addCapability(Status.NONMOVEABLE);
     }
 

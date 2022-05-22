@@ -31,7 +31,7 @@ public class WarpPipe extends Ground implements Resettable {
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = super.allowableActions(actor, location, direction);
         if (location.containsAnActor() == true) {
-                actions.add(new Teleportation(destination, departure));
+            actions.add(new Teleportation(destination, departure));
         }
         return actions;
     }

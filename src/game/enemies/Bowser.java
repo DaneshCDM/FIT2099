@@ -2,7 +2,6 @@ package game.enemies;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
@@ -10,13 +9,11 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Resettable;
 import game.Status;
 import game.Utils;
-import game.behaviours.Behaviour;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static game.Monologue.getBowserSentences;
-import static game.Monologue.getPrincessPeachSentences;
 
 public class Bowser extends Enemies implements Resettable {
 
@@ -26,8 +23,11 @@ public class Bowser extends Enemies implements Resettable {
     private int turnCounter = 0;
     List<String> bowserMonologue = new ArrayList<>(List.of(getBowserSentences()));
 
+    // Bowser holds the Key to save Princess Peach
+//    public static Key playerCoinWallet = new CoinWallet();
+
     public Bowser(Location currentLocation) {
-        super("Bowser", 'B', 500);
+        super("Bowser", 'B', 5);
         this.addCapability(Status.FIRE);
         this.storeLocation = currentLocation;
         registerInstance();

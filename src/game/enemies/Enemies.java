@@ -20,6 +20,7 @@ import java.util.Map;
 public abstract class Enemies extends Actor {
     Location location;
     private final Map<Integer, Behaviour> behaviours = new HashMap<>();
+
     /**
      * Constructor.
      *
@@ -52,7 +53,7 @@ public abstract class Enemies extends Actor {
         if (isConscious() == false) {
             //drop key upon death for bowser
             if (this.getDisplayChar()=='B'){
-                map.locationOf(this).addItem(new Key("Key",'K',true));
+                map.locationOf(this).addItem(new Key());
             }
             map.removeActor(this);
         }
