@@ -15,6 +15,6 @@ public enum Status {
     LAVA, // actor can enter the lavamap
     FLYINGKOOPA, // actors that can fly
     HASWRENCH,// actor has wrench
-    NONMOVEABLE,
-    BOWSER,
+    NONMOVEABLE, // actor can't wander around
+    BOWSER, // actor is a bowser
 }

@@ -32,6 +32,14 @@ public class PiranhaPlant extends Enemies{
         return intrinsicWeapon;
     }
 
+    /**
+     *
+     * @param actions
+     * @param lastAction
+     * @param map
+     * @param display
+     * @return
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 

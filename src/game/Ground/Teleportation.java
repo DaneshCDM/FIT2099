@@ -9,6 +9,11 @@ public class Teleportation extends Action {
     WarpPipe teledestination;
     WarpPipe teledeparture;
 
+    /**
+     *
+     * @param destination
+     * @param departure
+     */
     public Teleportation(WarpPipe destination, WarpPipe departure) {
         this.teledestination = destination;
         this.teledeparture = departure;
@@ -18,6 +23,10 @@ public class Teleportation extends Action {
         return teledestination;
     }
 
+    /**
+     *
+     * @param teledestination
+     */
     public void setTeledestination(WarpPipe teledestination) {
         this.teledestination = teledestination;
     }
@@ -26,10 +35,20 @@ public class Teleportation extends Action {
         return teledeparture;
     }
 
+    /**
+     *
+     * @param teledeparture
+     */
     public void setTeledeparture(WarpPipe teledeparture) {
         this.teledeparture = teledeparture;
     }
 
+    /**
+     *
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         map.moveActor(actor, this.teledestination.getLocation());
@@ -37,6 +56,11 @@ public class Teleportation extends Action {
         return actor + " teleports to " + this.teledestination;
     }
 
+    /**
+     *
+     * @param actor The actor performing the action.
+     * @return
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " teleports to " + this.teledestination;

@@ -19,11 +19,22 @@ public class FlyingKoopa extends Enemies{
     private int turnCounter = 0;
     List<String> flyingKoopaMonologue = new ArrayList<>(List.of(getFlyingKoopaSentences()));
 
+    /**
+     * Constructor
+     */
     public FlyingKoopa() {
         super("Flying Koopa", 'F', 150);
         this.addCapability(Status.FLYINGKOOPA);
     }
 
+    /**
+     *
+     * @param actions
+     * @param lastAction
+     * @param map
+     * @param display
+     * @return
+     */
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
         if (isConscious() == false) {
@@ -45,6 +56,13 @@ public class FlyingKoopa extends Enemies{
         return super.playTurn(actions, lastAction, map, display);
     }
 
+    /**
+     *
+     * @param otherActor
+     * @param direction
+     * @param map
+     * @return
+     */
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions;
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.

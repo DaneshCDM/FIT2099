@@ -12,11 +12,22 @@ public abstract class Fountain extends Ground {
 
     public static Fountain fountain;
 
+    /**
+     *
+     * @param displayChar
+     */
     public Fountain(char displayChar) {
         super(displayChar);
         fountain = this;
     }
 
+    /**
+     *
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return
+     */
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList newActions = new ActionList();
         if (location.containsAnActor() == true) {
@@ -25,6 +36,11 @@ public abstract class Fountain extends Ground {
         return newActions;
     }
 
+    /**
+     *
+     * @param drinkWater
+     * @return
+     */
     public abstract String fountainsEffect(DrinkWater drinkWater);
 
     public abstract String typeOfWater();

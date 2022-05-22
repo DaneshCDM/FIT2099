@@ -15,18 +15,33 @@ public class WarpPipe extends Ground implements Resettable {
     WarpPipe departure = this;
     PiranhaPlant piranhaPlant;
 
+    /**
+     *
+     * @param map
+     */
     public WarpPipe(String map) {
         super('C');
         this.map = map;
         this.registerInstance();
     }
 
+    /**
+     *
+     * @param destination
+     */
     public WarpPipe(WarpPipe destination) {
         super('C');
         this.destination = destination;
         this.registerInstance();
     }
 
+    /**
+     *
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = super.allowableActions(actor, location, direction);
@@ -36,6 +51,10 @@ public class WarpPipe extends Ground implements Resettable {
         return actions;
     }
 
+    /**
+     *
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         this.location = location;
@@ -52,6 +71,10 @@ public class WarpPipe extends Ground implements Resettable {
         return map;
     }
 
+    /**
+     *
+     * @param map
+     */
     public void setMap(String map) {
         this.map = map;
     }
@@ -60,6 +83,10 @@ public class WarpPipe extends Ground implements Resettable {
         return location;
     }
 
+    /**
+     *
+     * @param location
+     */
     public void setLocation(Location location) {
         this.location = location;
     }
@@ -68,6 +95,10 @@ public class WarpPipe extends Ground implements Resettable {
         return destination;
     }
 
+    /**
+     *
+     * @param destination
+     */
     public void setDestination(WarpPipe destination) {
         this.destination = destination;
     }
@@ -76,6 +107,10 @@ public class WarpPipe extends Ground implements Resettable {
         return departure;
     }
 
+    /**
+     *
+     * @param departure
+     */
     public void setDeparture(WarpPipe departure) {
         this.departure = departure;
     }

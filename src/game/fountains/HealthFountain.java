@@ -9,6 +9,11 @@ public class HealthFountain extends Fountain{
         super('H');
     }
 
+    /**
+     *
+     * @param drinkWater
+     * @return
+     */
     public String fountainsEffect(DrinkWater drinkWater) {
         drinkWater.healing(50);
         return drinkWater + " gained 50 HP ";

@@ -28,6 +28,10 @@ public class Bowser extends Enemies implements Resettable {
     // Bowser's Key
     public static Key bowserKey = new Key();
 
+    /**
+     *
+     * @param currentLocation
+     */
     public Bowser(Location currentLocation) {
         super("Bowser", 'B', 5);
         this.addCapability(Status.FIRE);
@@ -38,11 +42,23 @@ public class Bowser extends Enemies implements Resettable {
         this.addItemToInventory(bowserKey);
     }
 
+    /**
+     *
+     * @return
+     */
     public IntrinsicWeapon intrinsicWeapon(){
         intrinsicWeapon = new IntrinsicWeapon(80, "PUNCH");
         return intrinsicWeapon;
     }
 
+    /**
+     *
+     * @param actions
+     * @param lastAction
+     * @param map
+     * @param display
+     * @return
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
