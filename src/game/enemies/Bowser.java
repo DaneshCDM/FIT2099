@@ -49,7 +49,6 @@ public class Bowser extends Enemies implements Resettable {
         if (this.hasCapability(Status.BOWSER)) {
             if (storeLocation.containsAnActor() == false){
                 this.removeCapability(Status.BOWSER);
-//                map.moveActor(this, storeLocation);
             }
         }
 
