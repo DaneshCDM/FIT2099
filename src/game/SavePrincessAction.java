@@ -24,11 +24,12 @@ public class SavePrincessAction extends Action {
 
         // Check if Player/Mario has the Key to save Princess Peach
         if (actor.getInventory().contains(bowserKey)){
-            return ("*******************************************" + "\n" +
-                    "***       CONGRATULATIONS PLAYER!       ***" + "\n" +
-                    "*******************************************" + "\n" +
-                    "***     You saved Princess Peach :D     ***" + "\n" +
-                    "*******************************************");
+            return ("""
+                    *******************************************
+                    ***       CONGRATULATIONS PLAYER!       ***
+                    *******************************************
+                    ***     You saved Princess Peach :D     ***
+                    *******************************************""");
         }
         else{
             return (target) + ": " + "Mario you need to Kill Bowser and take his Key to save me! ;( ";
