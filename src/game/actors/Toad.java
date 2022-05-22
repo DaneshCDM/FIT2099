@@ -21,7 +21,7 @@ import java.util.List;
 import static game.Monologue.getToadSentences;
 
 /**
- *  Toad class manages everything to do with Toad and the Shop Items/Trading
+ *  Toad class manages everything to do with the Character Toad and the Shop Items/Trading
  *  @author Danesh Mariapan
  */
 public class Toad extends Actor {
@@ -91,8 +91,6 @@ public class Toad extends Actor {
 
         return newActions;
     }
-
-
 
 
 }

@@ -10,18 +10,28 @@ import java.util.List;
 
 import static game.Monologue.*;
 
+/**
+ * SpeakAction class manages the Action used to Interact and Speak with Toad
+ * Toad's possible speaking sentences differ depending on what items the Player (Mario) has
+ * @author Danesh Mariapan
+ */
 public class SpeakAction extends Action {
 
     private final Actor target;
 
     /**
-     *
+     * Constructor for the Action
      * @param target the Actor that we want to speak to
      */
     public SpeakAction(Actor target) {
         this.target = target;
     }
 
+    /**
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return A random Monologue String that the Toad says (Differs based on what Mario has)
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
 
@@ -52,6 +62,10 @@ public class SpeakAction extends Action {
         return (target) + ": " + toadMonologue.get(randomIndex);
     }
 
+    /**
+     * @param actor The actor performing the action.
+     * @return String - The possible chosen Action displayed on the console
+     */
     @Override
     public String menuDescription(Actor actor) {
         return (actor + " speaks to " + target);

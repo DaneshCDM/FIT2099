@@ -6,16 +6,30 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.currency.CoinWallet;
 
+/**
+ * TradeAction class manages the Action used to Trade with Toad in his Shop of Magical Items
+ * Also manages the currency / transactions made after purchases
+ * @author Danesh Mariapan
+ */
 public class TradeAction extends Action {
 
     private final Item tradeItem;
     private final int price;
 
+    /**
+     * @param tradeItem The item available in Toad's shop
+     * @param price The price of the Item
+     */
     public TradeAction(Item tradeItem, int price) {
         this.tradeItem = tradeItem;
         this.price = price;
     }
 
+    /**
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return String - Displays on the Console what the Player has bought and for how much
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
 
@@ -54,12 +68,15 @@ public class TradeAction extends Action {
         return result;
     }
 
+    /**
+     *
+     * @param actor The actor performing the action.
+     * @return String - The possible chosen Action displayed on the console
+     */
     @Override
     public String menuDescription(Actor actor) {
         return "Buy " + tradeItem + " for " + "$" + price;
     }
-
-
 
 
 }

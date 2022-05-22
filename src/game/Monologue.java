@@ -1,13 +1,13 @@
 package game;
 
 /**
- *  Monologue holds all of the Allies' & Enemies' Sentences
+ *  Monologue holds all the Allies' & Enemies' Sentences
  *  @author Danesh Mariapan
  */
 public class Monologue {
 
     /**
-     * Sentences that the Toad can choose to say, as Static Strings
+     * Sentences that the Toad can choose to say
      */
     public static final String T1 = "You might need a wrench to smash Koopa's hard shells";
     public static final String T2 = "You better get back to finding the Power Stars";

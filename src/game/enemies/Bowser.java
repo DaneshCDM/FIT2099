@@ -52,7 +52,7 @@ public class Bowser extends Enemies implements Resettable {
             }
         }
 
-        // Drop the Key onto map when Bowser dies
+        // Drop the Key onto map when Bowser dies - Danesh REQ2
         if (!this.isConscious()){
             this.removeItemFromInventory(bowserKey);
             map.locationOf(this).addItem(bowserKey);

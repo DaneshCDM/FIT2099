@@ -2,6 +2,11 @@ package game.magicalitems;
 
 import edu.monash.fit2099.engine.items.Item;
 
+/**
+ * Key class manages everything to do with the Key Item
+ * The Key is held by Bowser and can only be obtained by Killing Bowser - It is used to save Princess Peach
+ * @author Danesh Mariapan
+ */
 public class Key extends Item {
 
     /**

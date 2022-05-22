@@ -7,6 +7,11 @@ import game.magicalitems.Key;
 
 import static game.enemies.Bowser.bowserKey;
 
+/**
+ * SavePrincessAction class manages the Action used to save Princess Peach to Win the Game
+ * This Action is used to interact with Princess Peach if the Player has obtained the Key from Bowser
+ * @author Danesh Mariapan
+ */
 public class SavePrincessAction extends Action {
 
     private final Actor target;
@@ -19,6 +24,11 @@ public class SavePrincessAction extends Action {
         this.target = target;
     }
 
+    /**
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return Strings - For the End Game messages. (Either Victory or a hint to Win the Game)
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
 
@@ -37,6 +47,10 @@ public class SavePrincessAction extends Action {
 
     }
 
+    /**
+     * @param actor The actor performing the action.
+     * @return String - The possible chosen Action displayed on the console
+     */
     @Override
     public String menuDescription(Actor actor) {
         return "Save Princess Peach";

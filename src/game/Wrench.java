@@ -2,8 +2,16 @@ package game;
 
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 
+/**
+ *  Wrench Class manages everything to do with the Key Item
+ *  Wrench is an Item that can be bought from the Toad
+ *  @author Danesh Mariapan
+ */
 public class Wrench extends WeaponItem {
 
+    /**
+     * Wrench Item Attributes
+     */
     public static final String NAME = "Wrench";
     private static final Character DISPLAY_CHARACTER = 'w';
     private static final int DAMAGE = 50;
@@ -16,8 +24,6 @@ public class Wrench extends WeaponItem {
     public Wrench() {
         super(NAME, DISPLAY_CHARACTER, DAMAGE, VERB, HIT_RATE);
     }
-
-
 
 
 }
