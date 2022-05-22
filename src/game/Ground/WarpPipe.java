@@ -40,7 +40,7 @@ public class WarpPipe extends Ground implements Resettable {
     public void tick(Location location) {
         this.location = location;
         if (piranhaPlant == null){
-            if (location.containsAnActor() == false){
+            if (location.containsAnActor() == false && this.map != "lavaZone"){
                 piranhaPlant = new PiranhaPlant();
                 location.addActor(piranhaPlant);
             }
