@@ -1,3 +1,3 @@
-# mario-s1-2022
+# Roguelike Super Mario 
 
-Assignment repo for Semester 1 - 2022
+FIT2099 Assignment Repo - S1 2022
