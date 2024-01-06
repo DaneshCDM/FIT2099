@@ -10,7 +10,7 @@ FIT2099 Assignment Repo - S1 2022 <br/> <br/>
 ![Screenshot 2024-01-07 014855](https://github.com/DaneshCDM/FIT2099/assets/66300163/85713cb1-4cfb-4fee-8f0b-6dd130a6972d)
 [Game Narration / NPC Moves] <br/> <br/>
 
-![Screenshot 2024-01-07 015908](https://github.com/DaneshCDM/FIT2099/assets/66300163/0c77d5f3-8d71-4b5f-998e-2ab2d69c5f07)
+![Screenshot 2024-01-07 015908](https://github.com/DaneshCDM/FIT2099/assets/66300163/0c77d5f3-8d71-4b5f-998e-2ab2d69c5f07) <br/>
 [Game Symbol Guide / Legend] <br/> <br/>
 
 ![engine-2022](https://github.com/DaneshCDM/FIT2099/assets/66300163/08001a98-9bc6-4d63-9548-cac8ef656748)
